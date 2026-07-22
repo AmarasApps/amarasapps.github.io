@@ -1,17 +1,3 @@
-<!--
-  This file is the SUPPORT PAGE for Sparepay, intended for the GitHub Pages repo
-  `amarasapps.github.io` (served at https://amarasapps.github.io/).
-
-  HOW TO USE
-  1. Copy this file into the `amarasapps.github.io` repository as README.md
-     (GitHub Pages' default Jekyll renders README.md as the homepage when no
-     index.md/index.html exists).
-  2. In that repo: Settings → Pages → pick a Theme (e.g. "Cayman" or "Minimal")
-     for nicer styling.
-  3. Replace every [PLACEHOLDER] below (email, form link, repo link).
-  4. Commit — it goes live at https://amarasapps.github.io/ within a minute.
--->
-
 # Sparepay Support
 
 **Budget from payday to payday — and always know what you have left to spend.**
@@ -22,11 +8,11 @@ Welcome to the support page for **Sparepay**, a private, on-device personal budg
 
 ## 📮 Get help
 
-The fastest way to reach us:
+The fastest way to reach us is by email:
 
-- **Report a bug or request a feature:** [Open the feedback form]([FORM_LINK]) &nbsp;<!-- [REPLACE with a Tally.so / Google Form / Formspree link] -->
+- **Email:** [support@amarasapps.com](mailto:support@amarasapps.com?subject=Sparepay%20Support)
 
-When you email us about a problem, please include:
+Whether you've hit a bug or want to request a feature, drop us a line. When you email us about a problem, please include:
 
 - Your **device** (e.g. iPhone 15 Pro, MacBook Air M2)
 - Your **OS version** (Settings → General → About, or  → About This Mac)
@@ -58,7 +44,7 @@ Add the **Month Leftover** widget to your Home Screen (or Lock Screen on iPhone)
 No account or sign-in is needed — just open the app and start budgeting. <!-- [Adjust this line if you add pricing or subscriptions later] -->
 
 ### How do I delete my data?
-Deleting the app removes its on-device data. To also remove synced data, you can turn off iCloud for Sparepay in your device settings, or delete the app's data from iCloud in Settings → [your name] → iCloud → Manage Storage.
+Deleting the app removes its on-device data. To also remove synced data, you can turn off iCloud for Sparepay in your device settings, or delete the app's data from iCloud in Settings → your name → iCloud → Manage Account Storage.
 
 ---
 

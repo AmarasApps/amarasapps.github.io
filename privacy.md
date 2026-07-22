@@ -1,26 +1,9 @@
-<!--
-  PRIVACY POLICY for Sparepay — intended for the GitHub Pages repo
-  `amarasapps.github.io`, served at https://amarasapps.github.io/privacy
-
-  HOW TO USE
-  1. Copy this file into the amarasapps.github.io repo as `privacy.md`.
-  2. Replace every [PLACEHOLDER] (contact email, effective date, controller name).
-  3. Commit — it publishes at https://amarasapps.github.io/privacy
-  4. Use that URL in App Store Connect → App Information → Privacy Policy URL,
-     and in App Privacy answer "Data Not Collected" (see note at bottom).
-
-  NOTE: This is a template accurately describing Sparepay's on-device architecture.
-  It is not legal advice. Review it (or have it reviewed) before relying on it,
-  and revisit it if you ever add analytics, accounts, subscriptions, ads, or any
-  feature that transmits data off-device.
--->
-
 # Privacy Policy for Sparepay
 
 **Effective date:** 22 July 2026
 **Last updated:** 22 July 2026
 
-This Privacy Policy explains how **Sparepay** (the "App") handles information. Sparepay is a personal budgeting app for iPhone, iPad, and Mac, published by **amarasapps** ("we", "us", or "our"). <!-- [Replace "amarasapps" with your legal name/entity if different] -->
+This Privacy Policy explains how **Sparepay** (the "App") handles information. Sparepay is a personal budgeting app for iPhone, iPad, and Mac, published by **amarasapps** ("we", "us", or "our").
 
 We have designed Sparepay to be **private by default**. In short: **your financial data stays on your device and in your own private iCloud account. We do not collect it, receive it, store it on our servers, or share it with anyone.**
 
@@ -30,8 +13,8 @@ We have designed Sparepay to be **private by default**. In short: **your financi
 
 For the purposes of the UK GDPR and EU GDPR, the data controller for any limited processing described below is:
 
-- **Controller:** amarasapps <!-- [Your name or registered entity] -->
-- **Contact:** [support@amarasapps.com] <!-- [Your real contact email] -->
+- **Controller:** amarasapps
+- **Contact:** [support@amarasapps.com](mailto:support@amarasapps.com)
 
 If you are in the UK or EEA, you have the rights described in Section 8.
 
@@ -100,7 +83,7 @@ Because we do not collect or hold any of your personal data, there is nothing fo
 - **Access & portability:** all your data is on your device; you can export summaries from within the App.
 - **Deletion:** you can delete individual entries in the App, or delete all data by removing the App. To remove synced data, disable iCloud for Sparepay or delete the App's data via **Settings → [your name] → iCloud → Manage Account Storage** on your device.
 
-If you are in the UK or EEA and believe your data-protection rights have been infringed, you may contact us at [support@amarasapps.com], and you have the right to lodge a complaint with your local supervisory authority (in the UK, the [Information Commissioner's Office](https://ico.org.uk/)).
+If you are in the UK or EEA and believe your data-protection rights have been infringed, you may contact us at [support@amarasapps.com](mailto:support@amarasapps.com), and you have the right to lodge a complaint with your local supervisory authority (in the UK, the [Information Commissioner's Office](https://ico.org.uk/)).
 
 ---
 
@@ -132,8 +115,8 @@ We may update this Privacy Policy from time to time — for example, if we add n
 
 If you have any questions about this Privacy Policy or how Sparepay handles data, please contact:
 
-**amarasapps** <!-- [Your name/entity] -->
-Email: [support@amarasapps.com] <!-- [Your real contact email] -->
+**amarasapps**
+Email: [support@amarasapps.com](mailto:support@amarasapps.com)
 
 ---
 
