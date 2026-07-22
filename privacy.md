@@ -15,11 +15,6 @@
   feature that transmits data off-device.
 -->
 
----
-title: Privacy Policy
-description: How Sparepay handles your data.
----
-
 # Privacy Policy for Sparepay
 
 **Effective date:** 22 July 2026
