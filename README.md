@@ -64,8 +64,7 @@ Deleting the app removes its on-device data. To also remove synced data, you can
 
 ## 🔒 Privacy
 
-Sparepay is designed to be private by default. Read the full policy here: [Privacy Policy]([PRIVACY_LINK]).
-<!-- [REPLACE [PRIVACY_LINK] — you also need this URL for App Store Connect's App Privacy section. It can be another page on this same site, e.g. https://amarasapps.github.io/privacy] -->
+Sparepay is designed to be private by default. Read the full policy here: [Privacy Policy]([https://amarasapps.github.io/privacy]).
 
 ---
 
