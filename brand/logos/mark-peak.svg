@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" role="img" aria-label="AmarasApps — Peak mark">
+  <defs>
+    <linearGradient id="peakBg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#3B82F6"/>
+      <stop offset="1" stop-color="#6D5EF6"/>
+    </linearGradient>
+    <linearGradient id="peakSheen" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#ffffff" stop-opacity=".28"/>
+      <stop offset=".5" stop-color="#ffffff" stop-opacity="0"/>
+    </linearGradient>
+  </defs>
+  <rect x="16" y="16" width="480" height="480" rx="112" fill="url(#peakBg)"/>
+  <rect x="16" y="16" width="480" height="480" rx="112" fill="url(#peakSheen)"/>
+  <!-- Monogram A: apex + two legs + crossbar, round joints -->
+  <path d="M256 132 L360 380 M256 132 L152 380 M198 300 L314 300"
+        fill="none" stroke="#ffffff" stroke-width="46"
+        stroke-linecap="round" stroke-linejoin="round"/>
+</svg>

@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AmarasApps — Proposal 3 · Aurora Intensity</title>
+<style>
+  :root{
+    --page-w:210mm; --page-h:297mm; --pad:15mm;
+    --sans:-apple-system,BlinkMacSystemFont,"SF Pro Text","Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+    --rounded:"SF Pro Rounded",ui-rounded,-apple-system,"Segoe UI",system-ui,sans-serif;
+    --mono:ui-monospace,"SF Mono",Menlo,Consolas,monospace;
+    --ink:#17121c; --ink-soft:#4d4458; --muted:#8a8098; --line:#e7e3ec;
+  }
+  *{box-sizing:border-box;-webkit-print-color-adjust:exact;print-color-adjust:exact;}
+  html,body{margin:0;padding:0;background:#3a3342;font-family:var(--sans);color:var(--ink);}
+  .page{position:relative;width:var(--page-w);min-height:var(--page-h);background:#fff;margin:10mm auto;padding:var(--pad);box-shadow:0 6px 30px rgba(0,0,0,.4);overflow:hidden;page-break-after:always;}
+  .page:last-child{page-break-after:auto;}
+  @media print{html,body{background:#fff;}.page{margin:0;box-shadow:none;width:auto;min-height:auto;}@page{size:A4;margin:0;}}
+  h1,h2,h3,h4{font-family:var(--rounded);font-weight:700;letter-spacing:-.02em;line-height:1.08;margin:0;}
+  p{line-height:1.55;}
+  .kicker{font-size:10.5px;letter-spacing:.28em;text-transform:uppercase;color:var(--muted);font-weight:700;}
+  .small{font-size:11.5px;color:var(--ink-soft);}
+  .mono{font-family:var(--mono);}
+  .pagenum{position:absolute;bottom:8mm;right:var(--pad);font-size:10px;color:var(--muted);font-family:var(--mono);}
+  .foot{position:absolute;bottom:8mm;left:var(--pad);font-size:10px;color:var(--muted);letter-spacing:.04em;}
+  hr.rule{border:0;border-top:1px solid var(--line);margin:12px 0;}
+  .head2{display:flex;align-items:baseline;justify-content:space-between;margin-bottom:4px;}
+  .head2 h2{font-size:27px;}
+  .badge{font-family:var(--mono);font-size:10px;letter-spacing:.1em;text-transform:uppercase;padding:4px 9px;border-radius:6px;}
+  .lead{color:var(--ink-soft);font-size:13px;max-width:80ch;margin:6px 0 12px;}
+  .paneltitle{font-family:var(--rounded);font-weight:700;font-size:11px;color:var(--muted);text-transform:uppercase;letter-spacing:.12em;margin-bottom:8px;}
+  .panel{border-radius:14px;padding:14px;border:1px solid var(--line);}
+  .cols{display:grid;grid-template-columns:1fr 1fr;gap:16px;align-items:start;}
+  .note{font-size:11px;color:var(--ink-soft);background:#faf7fc;border-left:3px solid #7C3AED;padding:9px 12px;border-radius:0 8px 8px 0;margin-top:10px;}
+  .vtag{display:inline-block;font-family:var(--rounded);font-weight:800;font-size:11px;padding:4px 10px;border-radius:999px;}
+  .swrow{display:flex;gap:6px;margin:6px 0;}
+  .swrow span{flex:1;height:30px;border-radius:6px;display:flex;align-items:flex-end;justify-content:flex-start;font-family:var(--mono);font-size:7.5px;color:rgba(255,255,255,.9);padding:2px 4px;}
+  .cap{padding:6px 8px;font-size:9.5px;color:var(--muted);font-family:var(--mono);border-top:1px solid var(--line);background:#fafbfc;}
+  .scene{border-radius:12px;overflow:hidden;border:1px solid var(--line);}
+  .wordmark{font-family:var(--rounded);font-weight:800;letter-spacing:-.02em;}
+  /* mock hero */
+  .hero{padding:18px;color:#F6F2FA;height:240px;display:flex;flex-direction:column;gap:11px;}
+  .hnav{display:flex;align-items:center;gap:9px;font-size:12px}
+  .htitle{font-family:var(--rounded);font-weight:800;font-size:23px;line-height:1.08;margin-top:2px}
+  .hbtn{display:inline-block;padding:9px 16px;border-radius:10px;font-family:var(--rounded);font-weight:700;font-size:12px;color:#fff;width:max-content}
+  .hcard{border-radius:12px;padding:11px 13px}
+  .light{padding:18px;color:#17121C;height:200px;display:flex;flex-direction:column;gap:10px;background:#FAF7FC}
+</style>
+</head>
+<body>
+
+<!-- COVER -->
+<section class="page" style="background:radial-gradient(1000px 480px at 15% -10%,rgba(167,139,250,.4),transparent 60%),radial-gradient(820px 500px at 115% 25%,rgba(236,72,153,.36),transparent 55%),linear-gradient(160deg,#141018,#221a2c);color:#fff;display:flex;flex-direction:column;justify-content:space-between">
+  <div style="display:flex;align-items:center;gap:14px"><img src="logos/prism-aurora.svg" width="58" style="border-radius:15px"/><span class="kicker" style="color:#c9a9e0">Proposal 3 · Aurora, dialled in</span></div>
+  <div>
+    <h1 style="font-size:50px;background:linear-gradient(90deg,#C4B5FD,#F0ABFC 55%,#FDA4AF);-webkit-background-clip:text;background-clip:text;color:transparent">How bright is Aurora?</h1>
+    <p style="font-size:16px;color:#c3b6cf;max-width:40ch;line-height:1.5">You chose Aurora, and you want it to feel <strong style="color:#F6F2FA">modern &amp; trustworthy</strong>. This compares two intensities side-by-side so you can pick the exact temperature.</p>
+  </div>
+  <div>
+    <div style="display:flex;gap:20px;align-items:center">
+      <div style="text-align:center"><div style="width:150px;height:26px;border-radius:8px;background:linear-gradient(90deg,#6D28D9,#7C3AED)"></div><div class="small" style="color:#a494b3;margin-top:6px;font-size:10px">A · Violet-anchored</div></div>
+      <div style="text-align:center"><div style="width:150px;height:26px;border-radius:8px;background:linear-gradient(90deg,#A78BFA,#EC4899,#FB7185)"></div><div class="small" style="color:#a494b3;margin-top:6px;font-size:10px">B · Full spectrum</div></div>
+    </div>
+    <p class="small" style="color:#9585a3;margin-top:14px">Same mark, same layout, same content — only the colour temperature changes. Prepared 23 Jul 2026.</p>
+  </div>
+  <div class="foot" style="color:#6b5c7a">AMARASAPPS · PROPOSAL 3</div><div class="pagenum" style="color:#6b5c7a">01</div>
+</section>
+
+<!-- THE TENSION -->
+<section class="page">
+  <div class="head2"><h2>“Modern &amp; trustworthy” — with Aurora</h2><span class="badge" style="background:#f3e8ff;color:#6b21a8">THE BRIEF</span></div>
+  <p class="lead">Aurora is the expressive palette, and “trustworthy” is the one quality bright spectrums don't shout by default. The good news: colourful brands <em>can</em> be deeply trusted (Stripe, Figma, Raycast) — they earn it through <strong>disciplined application</strong>, not by going grey. The lever is <strong>how much of the spectrum you actually show, and which hue leads.</strong></p>
+  <div class="cols">
+    <div class="panel"><div class="paneltitle">What makes it trustworthy</div><p class="small">• Colour is <strong>seasoning, not the meal</strong> — text always on neutrals.<br>• A <strong>grounded lead hue</strong> (deep violet) rather than hot pink.<br>• Deep <strong>aubergine canvas</strong> → “aurora at night”, sophisticated not candy.<br>• Mature layout, generous space, restrained motion.</p></div>
+    <div class="panel"><div class="paneltitle">What makes it modern</div><p class="small">• Spectrum gradient in the mark + one hero moment.<br>• Current, premium feel (violet is the “tech-premium” hue of the moment).<br>• Distinct from every blue B2B SaaS brand.<br>• A built-in, colourful sub-brand system.</p></div>
+  </div>
+  <div class="note">Both options below are <strong>fully WCAG-verified</strong>. The only difference is <em>temperature</em>: how much magenta/coral you let in, and whether the primary button is grounded violet or vivid. Judge on feel.</div>
+  <div class="foot">AMARASAPPS · PROPOSAL 3</div><div class="pagenum">02</div>
+</section>
+
+<!-- SIDE BY SIDE HERO -->
+<section class="page">
+  <div class="head2"><h2>Side by side — the studio hero</h2><span class="badge" style="background:#141018;color:#F0ABFC">A vs B</span></div>
+  <p class="lead">The same landing hero rendered both ways. Left leads with grounded deep-violet; right runs the full violet→magenta→coral spectrum.</p>
+  <div class="cols">
+    <!-- A violet anchored -->
+    <div class="scene">
+      <div class="hero" style="background:radial-gradient(300px 180px at 15% -10%,rgba(124,58,237,.4),transparent 60%),radial-gradient(240px 200px at 120% 15%,rgba(109,40,217,.35),transparent 55%),linear-gradient(160deg,#141018,#1e1630)">
+        <div class="hnav"><img src="logos/prism-aurora.svg" width="24" style="border-radius:7px"/><span class="wordmark" style="font-size:13px">AmarasApps</span><span style="flex:1"></span><span style="color:#B4A7C0;font-size:10px">Products · About</span></div>
+        <div class="htitle">Software you can<br><span style="color:#C4B5FD">rely on.</span></div>
+        <p style="font-size:11px;color:#B4A7C0;margin:0">A studio building thoughtful apps, one at a time.</p>
+        <span class="hbtn" style="background:#6D28D9">See our work</span>
+        <div class="hcard" style="background:#211A2A;border-left:3px solid #7C3AED;margin-top:2px"><div style="font-family:var(--rounded);font-weight:700;font-size:12px">Sparepay</div><div style="font-size:9.5px;color:#B4A7C0">Budget from payday to payday</div></div>
+      </div>
+      <div class="cap">A · VIOLET-ANCHORED — grounded, premium, most 'trustworthy'</div>
+    </div>
+    <!-- B full spectrum -->
+    <div class="scene">
+      <div class="hero" style="background:radial-gradient(300px 180px at 12% -10%,rgba(236,72,153,.34),transparent 60%),radial-gradient(260px 210px at 120% 18%,rgba(167,139,250,.42),transparent 55%),radial-gradient(220px 160px at 60% 120%,rgba(251,113,133,.3),transparent 55%),linear-gradient(160deg,#141018,#221a2c)">
+        <div class="hnav"><img src="logos/prism-aurora.svg" width="24" style="border-radius:7px"/><span class="wordmark" style="font-size:13px">AmarasApps</span><span style="flex:1"></span><span style="color:#B4A7C0;font-size:10px">Products · About</span></div>
+        <div class="htitle">Ideas, shipped.<br><span style="background:linear-gradient(90deg,#C4B5FD,#EC4899,#FB7185);-webkit-background-clip:text;background-clip:text;color:transparent">Many kinds.</span></div>
+        <p style="font-size:11px;color:#B4A7C0;margin:0">A studio building thoughtful apps, one at a time.</p>
+        <span class="hbtn" style="background:linear-gradient(135deg,#7C3AED,#EC4899)">See our work</span>
+        <div class="hcard" style="background:#211A2A;border-left:3px solid #EC4899;margin-top:2px"><div style="font-family:var(--rounded);font-weight:700;font-size:12px">Sparepay</div><div style="font-size:9.5px;color:#B4A7C0">Budget from payday to payday</div></div>
+      </div>
+      <div class="cap">B · FULL SPECTRUM — vivid, creative, memorable</div>
+    </div>
+  </div>
+  <div class="note">Notice: A feels like a <em>premium studio you'd trust with your money</em>; B feels like a <em>creative studio that makes lots of things</em>. Both are legitimate — A skews trust, B skews expressive.</div>
+  <div class="foot">AMARASAPPS · PROPOSAL 3</div><div class="pagenum">03</div>
+</section>
+
+<!-- SIDE BY SIDE LIGHT + BUTTONS + SWATCHES -->
+<section class="page">
+  <div class="head2"><h2>Light pages, buttons &amp; palette</h2><span class="badge" style="background:#141018;color:#F0ABFC">A vs B</span></div>
+  <p class="lead">Most of a site's reading happens on light pages (product detail, privacy, FAQ). Here's how each temperature behaves there, plus the button system and the working swatches.</p>
+  <div class="cols">
+    <!-- A -->
+    <div>
+      <div class="scene">
+        <div class="light">
+          <div class="hnav" style="color:#17121C"><img src="logos/prism-aurora.svg" width="22" style="border-radius:6px"/><span class="wordmark" style="font-size:12px">AmarasApps</span><span style="flex:1"></span><span style="color:#61566B;font-size:10px">Products</span></div>
+          <div style="background:#fff;border:1px solid #efe8f3;border-radius:12px;padding:11px"><div class="small" style="color:#61566B;font-size:9px;text-transform:uppercase;letter-spacing:.1em">Featured</div><div style="font-family:var(--rounded);font-weight:800;font-size:15px">Sparepay</div><div style="font-size:10px;color:#61566B">Budget from payday to payday.</div></div>
+          <div style="display:flex;gap:8px"><span style="padding:9px 15px;border-radius:9px;background:#6D28D9;color:#fff;font-family:var(--rounded);font-weight:700;font-size:11.5px">Primary</span><span style="padding:9px 15px;border-radius:9px;border:1px solid #ddd0f0;color:#6D28D9;font-family:var(--rounded);font-weight:700;font-size:11.5px">Ghost</span></div>
+        </div>
+        <div class="cap">A · light page — one grounded violet accent</div>
+      </div>
+      <div class="vtag" style="background:#ede9fe;color:#5b21b6;margin-top:10px">A · Violet-anchored swatches</div>
+      <div class="swrow"><span style="background:#141018">#141018</span><span style="background:#211A2A">#211A2A</span><span style="background:#6D28D9">#6D28D9</span><span style="background:#7C3AED">#7C3AED</span><span style="background:#C4B5FD;color:#333">#C4B5FD</span></div>
+      <p class="small" style="font-size:10px">Lead: deep violet. Magenta/coral appear only inside the logo &amp; occasional gradient — never as UI colour. Calmest, most credible.</p>
+    </div>
+    <!-- B -->
+    <div>
+      <div class="scene">
+        <div class="light">
+          <div class="hnav" style="color:#17121C"><img src="logos/prism-aurora.svg" width="22" style="border-radius:6px"/><span class="wordmark" style="font-size:12px">AmarasApps</span><span style="flex:1"></span><span style="color:#61566B;font-size:10px">Products</span></div>
+          <div style="background:#fff;border:1px solid #efe8f3;border-radius:12px;padding:11px;border-top:3px solid;border-image:linear-gradient(90deg,#7C3AED,#EC4899,#FB7185) 1"><div class="small" style="color:#61566B;font-size:9px;text-transform:uppercase;letter-spacing:.1em">Featured</div><div style="font-family:var(--rounded);font-weight:800;font-size:15px">Sparepay</div><div style="font-size:10px;color:#61566B">Budget from payday to payday.</div></div>
+          <div style="display:flex;gap:8px"><span style="padding:9px 15px;border-radius:9px;background:linear-gradient(135deg,#7C3AED,#DB2777);color:#fff;font-family:var(--rounded);font-weight:700;font-size:11.5px">Primary</span><span style="padding:9px 15px;border-radius:9px;border:1px solid #f0d0e4;color:#be185d;font-family:var(--rounded);font-weight:700;font-size:11.5px">Ghost</span></div>
+        </div>
+        <div class="cap">B · light page — spectrum gradients &amp; accents</div>
+      </div>
+      <div class="vtag" style="background:#fce7f3;color:#9d174d;margin-top:10px">B · Full-spectrum swatches</div>
+      <div class="swrow"><span style="background:#141018">#141018</span><span style="background:#7C3AED">#7C3AED</span><span style="background:#DB2777">#DB2777</span><span style="background:#EC4899">#EC4899</span><span style="background:#FB7185;color:#333">#FB7185</span></div>
+      <p class="small" style="font-size:10px">Full violet→magenta→coral in gradients, borders &amp; accents. Most vivid &amp; distinctive; needs the discipline rules to stay credible.</p>
+    </div>
+  </div>
+  <table style="width:100%;border-collapse:collapse;font-size:10px;margin-top:8px">
+    <tr style="color:var(--muted);font-family:var(--rounded);font-size:9px;text-transform:uppercase;letter-spacing:.08em"><td style="padding:4px 6px">Contrast check</td><td>A primary btn</td><td>B primary btn</td><td>Body text (both)</td></tr>
+    <tr class="mono" style="font-size:9px"><td style="padding:4px 6px">white on fill</td><td>#6D28D9 → 7.1 <span class="mono" style="color:#14532d;font-weight:700">AAA</span></td><td>#7C3AED→#DB2777 → 5.7/4.6 <span style="color:#1e3a8a;font-weight:700">AA</span></td><td>#F6F2FA on #141018 → 17.0 <span style="color:#14532d;font-weight:700">AAA</span></td></tr>
+  </table>
+  <div class="foot">AMARASAPPS · PROPOSAL 3</div><div class="pagenum">04</div>
+</section>
+
+<!-- RECOMMENDATION -->
+<section class="page">
+  <div class="head2"><h2>My recommendation</h2><span class="badge" style="background:#dcfce7;color:#14532d">PICK</span></div>
+  <p class="lead">You said <strong>modern &amp; trustworthy</strong>, and you chose Aurora. Those two facts point clearly at one answer.</p>
+
+  <div class="panel" style="border-color:#7C3AED;border-width:2px;background:#faf7fc">
+    <div style="display:flex;align-items:center;gap:10px;margin-bottom:6px"><div style="width:34px;height:34px;border-radius:9px;background:linear-gradient(135deg,#6D28D9,#7C3AED)"></div><strong style="font-family:var(--rounded);font-size:16px">A · Violet-anchored Aurora</strong></div>
+    <p class="small">Keep Aurora's identity — the spectrum lives in the <strong>mark, the sub-brand hues, and one hero gradient</strong> — but run the <strong>UI on grounded deep violet</strong>. This is the “aurora at night” read: modern and distinctive because it's violet not blue, trustworthy because it's disciplined and grounded, not candy-bright. It also makes the per-product accent colours (Sparepay gold, etc.) pop harder, because the studio chrome stays calm.</p>
+  </div>
+
+  <div class="cols" style="margin-top:12px">
+    <div class="panel"><div class="paneltitle">Choose A (violet-anchored) if…</div><p class="small">You want people to trust the studio with serious products (finance, data), you like Aurora's look but want it to feel premium/mature, and you want products' own colours to stand out.</p></div>
+    <div class="panel"><div class="paneltitle">Choose B (full spectrum) if…</div><p class="small">You want maximum expressiveness and memorability, expect playful/consumer/creative products, and “distinctive” matters more to you than “sober”.</p></div>
+  </div>
+
+  <div class="note">My pick for your brief: <strong>A — Violet-anchored Aurora.</strong> It's the only version that satisfies <em>both</em> your words. We keep the beautiful spectrum where it earns attention (logo, sub-brands, hero) and stay grounded everywhere trust is built (buttons, text, layout). Full spectrum is always available later for a campaign or a playful product.</p></div>
+
+  <hr class="rule">
+  <p class="small"><strong>If you approve A</strong>, the next decisions get fast: <strong>logo finish</strong> (gradient vs liquid-glass Prism), <strong>confirm product hues</strong> (Sparepay = gold), and <strong>wordmark</strong> (SF Pro Rounded vs custom). Then we build the site.</p>
+  <div class="foot">AMARASAPPS · PROPOSAL 3</div><div class="pagenum">05</div>
+</section>
+
+</body>
+</html>

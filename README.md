@@ -1,57 +1,40 @@
-# Sparepay Support
+# amarasapps.github.io
 
-**Budget from payday to payday — and always know what you have left to spend.**
+Source for **[www.amarasapps.com](https://www.amarasapps.com)** — the AmarasApps studio
+site. Plain static HTML/CSS/JS served by GitHub Pages (no Jekyll; `.nojekyll` present).
 
-Welcome to the support page for **Sparepay**, a private, on-device personal budgeting app for iPhone, iPad, and Mac. This page is the place to get help, report a problem, or request a feature.
+## Structure
 
----
+```
+/                       index.html          Studio landing (dark hero → light body)
+/sparepay/              sparepay/index.html Sparepay product + support (its own navy+gold)
+/sparepay/privacy/      .../privacy/        Sparepay privacy policy
+assets/
+  css/site.css          design tokens (mirror of BRAND.md) + components
+  js/motion.js          scroll/motion — all gated behind prefers-reduced-motion
+  logos/                Prism marks: gradient (primary), glass, flat, mono, sparepay
+  favicon.svg / *.png   favicons + apple-touch-icon
+  og/                   1200×630 social share card
+BRAND.md                brand guidelines — the source of truth for tokens & rules
+brand/                  design folios + the definitive Brand-Guidelines.html/.pdf
+CNAME                   www.amarasapps.com
+```
 
-## 📮 Get help
+## Brand
 
-The fastest way to reach us is by email:
+The identity is **violet-anchored Aurora** with the **Prism** logo. See `BRAND.md` for the
+full token set, the WCAG rule (bright hues are fill/glow only), the sub-brand accent system,
+and typography. AmarasApps is a category-agnostic studio; **Sparepay keeps its own
+navy + gold** and only carries a small "by AmarasApps" endorsement.
 
-- **Email:** [support@amarasapps.com](mailto:support@amarasapps.com?subject=Sparepay%20Support)
+## Local preview
 
-Whether you've hit a bug or want to request a feature, drop us a line. When you email us about a problem, please include:
+```bash
+python3 -m http.server 8000
+# then open http://localhost:8000/
+```
 
-- Your **device** (e.g. iPhone 15 Pro, MacBook Air M2)
-- Your **OS version** (Settings → General → About, or  → About This Mac)
-- Your **Sparepay version** (Settings tab inside the app)
-- **What happened**, and what you expected instead
+## Deploy
 
-The more detail you give, the faster we can help.
-
----
-
-## ❓ Frequently asked questions
-
-### Is my financial data private?
-Yes. Sparepay stores everything **on your device** and syncs it **only through your own private iCloud account**. We do **not** run any server that receives your data, and your information is never sold or shared. Nothing about your spending leaves your Apple devices except to sync privately between them.
-
-### How does iCloud sync work?
-As long as you're signed into iCloud and have it enabled for Sparepay, your budgets sync automatically and privately across your iPhone, iPad, and Mac. If you're not signed into iCloud, the app still works fully — your data just stays on that one device.
-
-### What are the AI summaries, and where does my data go?
-The AI summaries are generated **entirely on your device** using **Apple Intelligence**. Your financial data is **never sent to any external server or third-party service** to create them. On devices where Apple Intelligence isn't available, Sparepay shows a short notice and falls back to a clear, non-AI summary format — still fully on-device.
-
-### Why can't I use the AI summaries?
-Apple Intelligence requires a supported device with the feature enabled (Settings → Apple Intelligence & Siri), and it may need a few minutes to download its models the first time. Until then, Sparepay automatically uses its built-in summary format instead.
-
-### How do the widgets work?
-Add the **Month Leftover** widget to your Home Screen (or Lock Screen on iPhone) to see what you have left to spend at a glance. Touch and hold the Home Screen → tap **+** → search for **Sparepay**.
-
-### Does Sparepay cost anything / require an account?
-No account or sign-in is needed — just open the app and start budgeting. <!-- [Adjust this line if you add pricing or subscriptions later] -->
-
-### How do I delete my data?
-Deleting the app removes its on-device data. To also remove synced data, you can turn off iCloud for Sparepay in your device settings, or delete the app's data from iCloud in Settings → your name → iCloud → Manage Account Storage.
-
----
-
-## 🔒 Privacy
-
-Sparepay is designed to be private by default. Read the full policy here: [Privacy Policy](https://www.amarasapps.com/privacy).
-
----
-
-<sub>© 2026 AmarasApps · Sparepay is not affiliated with Apple Inc. Apple, iCloud, and Apple Intelligence are trademarks of Apple Inc.</sub>
+Commit to `main`; GitHub Pages publishes automatically to the custom domain. All motion
+respects `prefers-reduced-motion`; contrast is WCAG AA/AAA verified.

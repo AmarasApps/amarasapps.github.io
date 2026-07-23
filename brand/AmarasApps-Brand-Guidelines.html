@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AmarasApps — Brand Guidelines</title>
+<style>
+  :root{
+    --page-w:210mm; --page-h:297mm; --pad:15mm;
+    --sans:-apple-system,BlinkMacSystemFont,"SF Pro Text","Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+    --rounded:"SF Pro Rounded",ui-rounded,-apple-system,"Segoe UI",system-ui,sans-serif;
+    --mono:ui-monospace,"SF Mono",Menlo,Consolas,monospace;
+    --ink:#17121c; --ink-soft:#4d4458; --muted:#8a8098; --line:#e7e3ec;
+  }
+  *{box-sizing:border-box;-webkit-print-color-adjust:exact;print-color-adjust:exact;}
+  html,body{margin:0;padding:0;background:#3a3342;font-family:var(--sans);color:var(--ink);}
+  .page{position:relative;width:var(--page-w);min-height:var(--page-h);background:#fff;margin:10mm auto;padding:var(--pad);box-shadow:0 6px 30px rgba(0,0,0,.4);overflow:hidden;page-break-after:always;}
+  .page:last-child{page-break-after:auto;}
+  @media print{html,body{background:#fff;}.page{margin:0;box-shadow:none;width:auto;min-height:auto;}@page{size:A4;margin:0;}}
+  h1,h2,h3,h4{font-family:var(--rounded);font-weight:700;letter-spacing:-.02em;line-height:1.08;margin:0;}
+  p{line-height:1.55;}
+  .kicker{font-size:10.5px;letter-spacing:.28em;text-transform:uppercase;color:var(--muted);font-weight:700;}
+  .small{font-size:11.5px;color:var(--ink-soft);}
+  .mono{font-family:var(--mono);}
+  .pagenum{position:absolute;bottom:8mm;right:var(--pad);font-size:10px;color:var(--muted);font-family:var(--mono);}
+  .foot{position:absolute;bottom:8mm;left:var(--pad);font-size:10px;color:var(--muted);letter-spacing:.04em;}
+  hr.rule{border:0;border-top:1px solid var(--line);margin:12px 0;}
+  .head2{display:flex;align-items:baseline;justify-content:space-between;margin-bottom:4px;}
+  .head2 h2{font-size:27px;}
+  .badge{font-family:var(--mono);font-size:10px;letter-spacing:.1em;text-transform:uppercase;padding:4px 9px;border-radius:6px;background:#f3e8ff;color:#6b21a8;}
+  .lead{color:var(--ink-soft);font-size:13px;max-width:80ch;margin:6px 0 12px;}
+  .paneltitle{font-family:var(--rounded);font-weight:700;font-size:11px;color:var(--muted);text-transform:uppercase;letter-spacing:.12em;margin-bottom:8px;}
+  .panel{border-radius:14px;padding:14px;border:1px solid var(--line);}
+  .cols{display:grid;grid-template-columns:1fr 1fr;gap:14px;align-items:start;}
+  .cols3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px;}
+  .cols4{display:grid;grid-template-columns:1fr 1fr 1fr 1fr;gap:12px;}
+  .note{font-size:11px;color:var(--ink-soft);background:#faf7fc;border-left:3px solid #7C3AED;padding:9px 12px;border-radius:0 8px 8px 0;margin-top:10px;}
+  .note.warn{border-color:#b45309;background:#fff7ed;}
+  .swatches{display:grid;grid-template-columns:repeat(6,1fr);gap:8px;margin:8px 0;}
+  .chipc{border-radius:10px;overflow:hidden;border:1px solid var(--line);}
+  .chipc .col{height:52px;}
+  .chipc .meta{padding:5px 7px;font-size:9.5px;line-height:1.3;}
+  .chipc .meta .role{font-weight:700;color:var(--ink);font-family:var(--rounded);font-size:10px;}
+  .chipc .meta .hex{font-family:var(--mono);color:var(--ink-soft);font-size:9px;}
+  table.wcag{width:100%;border-collapse:collapse;font-size:10px;margin-top:6px;}
+  table.wcag th,table.wcag td{text-align:left;padding:4px 6px;border-bottom:1px solid var(--line);}
+  table.wcag th{font-family:var(--rounded);font-size:9px;text-transform:uppercase;letter-spacing:.08em;color:var(--muted);}
+  table.wcag td.mono{font-family:var(--mono);font-size:9px;}
+  .tag{font-family:var(--mono);font-size:8.5px;font-weight:700;padding:2px 6px;border-radius:5px;}
+  .t-aaa{background:#dcfce7;color:#14532d;}.t-aa{background:#dbeafe;color:#1e3a8a;}
+  .dot{display:inline-block;width:11px;height:11px;border-radius:3px;vertical-align:middle;margin-right:5px;border:1px solid rgba(0,0,0,.12);}
+  .scene{border-radius:12px;overflow:hidden;border:1px solid var(--line);}
+  .scene .cap{padding:6px 8px;font-size:9.5px;color:var(--muted);font-family:var(--mono);border-top:1px solid var(--line);background:#fafbfc;}
+  .tile{display:flex;align-items:center;justify-content:center;}
+  .banner{display:flex;align-items:center;gap:12px;padding:0 18px;}
+  .wordmark{font-family:var(--rounded);font-weight:800;letter-spacing:-.02em;}
+  .cover{background:radial-gradient(1000px 480px at 15% -10%,rgba(167,139,250,.4),transparent 60%),radial-gradient(820px 500px at 115% 25%,rgba(236,72,153,.34),transparent 55%),radial-gradient(620px 380px at 60% 122%,rgba(251,113,133,.26),transparent 55%),linear-gradient(160deg,#141018 0%,#221a2c 55%,#141018 100%);color:#fff;display:flex;flex-direction:column;justify-content:space-between;}
+  .cover h1{font-size:56px;margin:0}
+  .cover h1 .g{background:linear-gradient(90deg,#C4B5FD,#F0ABFC 55%,#FDA4AF);-webkit-background-clip:text;background-clip:text;color:transparent}
+</style>
+</head>
+<body>
+
+<!-- COVER -->
+<section class="page cover">
+  <div style="display:flex;align-items:center;gap:14px"><img src="../assets/logos/prism-gradient.svg" width="60" style="border-radius:15px"/><span class="kicker" style="color:#c9a9e0">Brand Guidelines · v1</span></div>
+  <div>
+    <h1 class="wordmark">Amaras<span class="g">Apps</span></h1>
+    <p style="font-size:17px;color:#c3b6cf;max-width:38ch;line-height:1.5;margin-top:10px">The definitive identity for the studio — palette, logo, typography and the system that lets every product stand on its own.</p>
+  </div>
+  <div>
+    <div style="display:flex;gap:12px;align-items:center;margin-bottom:16px">
+      <img src="../assets/logos/prism-glass.svg" width="46" style="border-radius:12px"/>
+      <img src="../assets/logos/prism-flat.svg" width="46" style="border-radius:12px"/>
+      <img src="../assets/logos/prism-sparepay.svg" width="46" style="border-radius:12px"/>
+      <span class="small" style="color:#a494b3">Prism mark · gradient / glass / flat / product</span>
+    </div>
+    <p class="small" style="color:#9585a3">Violet-anchored Aurora · WCAG AA/AAA verified · Prepared 23 Jul 2026</p>
+  </div>
+  <div class="foot" style="color:#6b5c7a">AMARASAPPS · BRAND GUIDELINES</div>
+  <div class="pagenum" style="color:#6b5c7a">01</div>
+</section>
+
+<!-- IDENTITY SUMMARY -->
+<section class="page">
+  <div class="head2"><h2>The identity, in one page</h2><span class="badge">SUMMARY</span></div>
+  <p class="lead">AmarasApps is a <strong>category-agnostic software studio</strong>. Its brand is deliberately not tied to finance or to any single product. <strong>Sparepay</strong> is the first product and keeps its own navy+gold identity — linked to the studio only by a shared system and a small “by AmarasApps” endorsement.</p>
+  <div class="cols3">
+    <div class="panel"><div class="paneltitle">Personality</div><p class="small">Modern &amp; trustworthy. Expressive where it earns attention, grounded everywhere trust is built.</p></div>
+    <div class="panel"><div class="paneltitle">Palette</div><p class="small">Aurora, <strong>violet-anchored</strong>. Spectrum in the mark/hero/sub-brands; deep violet + neutrals for all UI.</p></div>
+    <div class="panel"><div class="paneltitle">Mark</div><p class="small">Prism — a faceted “A” refracting the spectrum. One studio → many products.</p></div>
+  </div>
+  <div class="cols3" style="margin-top:12px">
+    <div class="panel"><div class="paneltitle">Typography</div><p class="small">SF Pro Rounded 800 wordmark, two-tone “Amaras·Apps”. SF Pro body. SF Mono numerals.</p></div>
+    <div class="panel"><div class="paneltitle">Sub-brands</div><p class="small">Each product = the Prism refracting one reserved hue. Sparepay = gold.</p></div>
+    <div class="panel"><div class="paneltitle">Motion</div><p class="small">Rich but optional — all gated behind <span class="mono">prefers-reduced-motion</span>.</p></div>
+  </div>
+  <div class="note">This document supersedes the three exploratory folios (Brand-Folio, Proposal-2, Proposal-3) which remain in <span class="mono">/brand</span> as history. Tokens here are mirrored in <span class="mono">BRAND.md</span> and <span class="mono">assets/css/site.css</span>.</div>
+  <div class="foot">AMARASAPPS · BRAND GUIDELINES</div><div class="pagenum">02</div>
+</section>
+
+<!-- LOGO -->
+<section class="page">
+  <div class="head2"><h2>The Prism mark</h2><span class="badge">LOGO</span></div>
+  <p class="lead">Gradient is the primary finish (everywhere, all sizes). Liquid-glass is the app-icon &amp; hero variant. Flat violet + mono knockouts cover single-colour, print and endorsement use.</p>
+  <div class="cols4">
+    <div class="scene"><div class="tile" style="height:120px;background:#f2eff5"><img src="../assets/logos/prism-gradient.svg" width="92"/></div><div class="cap">GRADIENT · primary</div></div>
+    <div class="scene"><div class="tile" style="height:120px;background:#1c1526"><img src="../assets/logos/prism-glass.svg" width="92"/></div><div class="cap">GLASS · app-icon / hero</div></div>
+    <div class="scene"><div class="tile" style="height:120px;background:#f2eff5"><img src="../assets/logos/prism-flat.svg" width="92"/></div><div class="cap">FLAT VIOLET · low-ink</div></div>
+    <div class="scene"><div class="tile" style="height:120px;background:#f2eff5"><img src="../assets/logos/prism-mono-light.svg" width="92"/></div><div class="cap">MONO · endorsement</div></div>
+  </div>
+  <div class="cols" style="margin-top:12px">
+    <div>
+      <div class="paneltitle">Usage scenarios</div>
+      <div style="display:grid;grid-template-columns:64px 1fr 60px;gap:10px;align-items:center">
+        <div class="scene"><div class="tile" style="height:64px;background:#f0edf4"><img src="../assets/logos/prism-gradient.svg" width="46" style="border-radius:11px"/></div><div class="cap">icon</div></div>
+        <div class="scene"><div class="banner" style="height:64px;background:#141018"><img src="../assets/logos/prism-gradient.svg" width="28" style="border-radius:8px"/><span class="wordmark" style="color:#F6F2FA;font-size:16px">Amaras<span style="color:#C4B5FD">Apps</span></span></div><div class="cap">lockup</div></div>
+        <div class="scene"><div class="tile" style="height:64px;background:#fff"><img src="../assets/logos/prism-gradient.svg" width="22" style="border-radius:5px"/></div><div class="cap">favicon</div></div>
+      </div>
+    </div>
+    <div class="panel">
+      <div class="paneltitle">Rules</div>
+      <p class="small">• Clear space ≥ 25% of mark height.<br>• Min size 16px (favicon) — split reads via opacity.<br>• On light grounds keep the tile's dark interior; never place bright facets directly on white.<br>• Endorsement uses the mono mark, always subordinate to the product wordmark.</p>
+    </div>
+  </div>
+  <div class="foot">AMARASAPPS · LOGO</div><div class="pagenum">03</div>
+</section>
+
+<!-- PALETTE + WCAG -->
+<section class="page">
+  <div class="head2"><h2>Aurora, violet-anchored</h2><span class="badge" style="background:#141018;color:#F0ABFC">PALETTE</span></div>
+  <p class="lead">Deep aubergine canvas, near-white text, deep-violet UI. The bright spectrum appears only in the mark, one hero gradient, and product accents.</p>
+  <div class="swatches">
+    <div class="chipc"><div class="col" style="background:#141018"></div><div class="meta"><div class="role">Canvas</div><div class="hex">#141018</div></div></div>
+    <div class="chipc"><div class="col" style="background:#211A2A"></div><div class="meta"><div class="role">Surface</div><div class="hex">#211A2A</div></div></div>
+    <div class="chipc"><div class="col" style="background:#F6F2FA"></div><div class="meta"><div class="role">Text</div><div class="hex">#F6F2FA</div></div></div>
+    <div class="chipc"><div class="col" style="background:#B4A7C0"></div><div class="meta"><div class="role">Muted</div><div class="hex">#B4A7C0</div></div></div>
+    <div class="chipc"><div class="col" style="background:#6D28D9"></div><div class="meta"><div class="role">Primary</div><div class="hex">#6D28D9</div></div></div>
+    <div class="chipc"><div class="col" style="background:#C4B5FD"></div><div class="meta"><div class="role">Link</div><div class="hex">#C4B5FD</div></div></div>
+  </div>
+  <div class="swatches">
+    <div class="chipc"><div class="col" style="background:#FAF7FC"></div><div class="meta"><div class="role">Light bg</div><div class="hex">#FAF7FC</div></div></div>
+    <div class="chipc"><div class="col" style="background:#FFFFFF;border-bottom:1px solid #eee"></div><div class="meta"><div class="role">Light card</div><div class="hex">#FFFFFF</div></div></div>
+    <div class="chipc"><div class="col" style="background:#17121C"></div><div class="meta"><div class="role">Ink</div><div class="hex">#17121C</div></div></div>
+    <div class="chipc"><div class="col" style="background:#61566B"></div><div class="meta"><div class="role">Muted-L</div><div class="hex">#61566B</div></div></div>
+    <div class="chipc"><div class="col" style="background:linear-gradient(135deg,#A78BFA,#EC4899,#FB7185)"></div><div class="meta"><div class="role">Spectrum</div><div class="hex">violet→coral</div></div></div>
+    <div class="chipc"><div class="col" style="background:#7C3AED"></div><div class="meta"><div class="role">Accent</div><div class="hex">#7C3AED</div></div></div>
+  </div>
+  <div class="note warn"><strong>The rule (measured):</strong> bright hues pass AAA as glow/fill-with-dark-text on dark, but FAIL as white-text button fills and as coloured text on white. Buttons on light use <span class="mono">#6D28D9</span>; body text always on neutrals; bright accents only as border/glow/dark-ink fill.</div>
+  <table class="wcag">
+    <tr><th>Foreground</th><th>On</th><th>Ratio</th><th>Grade</th></tr>
+    <tr><td class="mono">#F6F2FA text</td><td class="mono">#141018</td><td class="mono">17.01</td><td><span class="tag t-aaa">AAA</span></td></tr>
+    <tr><td class="mono">#B4A7C0 muted</td><td class="mono">#141018</td><td class="mono">8.26</td><td><span class="tag t-aaa">AAA</span></td></tr>
+    <tr><td class="mono">#C4B5FD link</td><td class="mono">#141018</td><td class="mono">10.18</td><td><span class="tag t-aaa">AAA</span></td></tr>
+    <tr><td class="mono">#17121C ink</td><td class="mono">#FAF7FC</td><td class="mono">17.35</td><td><span class="tag t-aaa">AAA</span></td></tr>
+    <tr><td class="mono">white</td><td class="mono">#6D28D9 button</td><td class="mono">7.10</td><td><span class="tag t-aaa">AAA</span></td></tr>
+    <tr><td class="mono">white</td><td class="mono">#7C3AED accent</td><td class="mono">5.70</td><td><span class="tag t-aa">AA</span></td></tr>
+  </table>
+  <div class="foot">AMARASAPPS · PALETTE</div><div class="pagenum">04</div>
+</section>
+
+<!-- SUB-BRANDS -->
+<section class="page">
+  <div class="head2"><h2>The sub-brand system</h2><span class="badge">PRODUCTS</span></div>
+  <p class="lead">Studio owns the full spectrum; each product is the same Prism refracting one reserved hue. Violet/magenta stays with the studio so the parent reads distinct from its children.</p>
+  <div class="cols4">
+    <div class="scene"><div class="tile" style="height:96px;background:#1c1526"><img src="../assets/logos/prism-gradient.svg" width="66"/></div><div class="cap">STUDIO · full spectrum</div></div>
+    <div class="scene"><div class="tile" style="height:96px;background:#1c1526"><img src="../assets/logos/prism-sparepay.svg" width="66"/></div><div class="cap">SPAREPAY · gold #F5C542</div></div>
+    <div class="scene"><div class="tile" style="height:96px;background:#1c1526"><img src="logos/prism-app2.svg" width="66"/></div><div class="cap">APP 2 · emerald #34D399</div></div>
+    <div class="scene"><div class="tile" style="height:96px;background:#1c1526"><img src="logos/prism-app3.svg" width="66"/></div><div class="cap">APP 3 · sky #38BDF8</div></div>
+  </div>
+  <table class="wcag">
+    <tr><th>Product accent</th><th>Hex</th><th>On Aurora surface</th><th>As dark-ink button</th><th>Status</th></tr>
+    <tr><td class="mono"><span class="dot" style="background:#F5C542"></span>Gold</td><td class="mono">#F5C542</td><td class="mono">10.39 <span class="tag t-aaa">AAA</span></td><td class="mono">11.59 <span class="tag t-aaa">AAA</span></td><td class="small">Sparepay (live)</td></tr>
+    <tr><td class="mono"><span class="dot" style="background:#34D399"></span>Emerald</td><td class="mono">#34D399</td><td class="mono">8.77 <span class="tag t-aaa">AAA</span></td><td class="mono">9.78 <span class="tag t-aaa">AAA</span></td><td class="small">reserved</td></tr>
+    <tr><td class="mono"><span class="dot" style="background:#38BDF8"></span>Sky</td><td class="mono">#38BDF8</td><td class="mono">7.87 <span class="tag t-aaa">AAA</span></td><td class="mono">8.78 <span class="tag t-aaa">AAA</span></td><td class="small">reserved</td></tr>
+    <tr><td class="mono"><span class="dot" style="background:#FBBF24"></span>Amber</td><td class="mono">#FBBF24</td><td class="mono">10.1 <span class="tag t-aaa">AAA</span></td><td class="mono">11.26 <span class="tag t-aaa">AAA</span></td><td class="small">reserved</td></tr>
+    <tr><td class="mono"><span class="dot" style="background:#FB7185"></span>Coral</td><td class="mono">#FB7185</td><td class="mono">6.26 <span class="tag t-aa">AA</span></td><td class="mono">6.98 <span class="tag t-aa">AA</span></td><td class="small">reserved</td></tr>
+  </table>
+
+  <hr class="rule">
+  <div class="paneltitle">Sparepay coexistence &amp; “by AmarasApps” endorsement</div>
+  <div class="cols">
+    <div class="scene"><div class="banner" style="height:60px;background:#fff;gap:8px;justify-content:center"><span style="font-family:var(--rounded);font-weight:800;font-size:15px;color:#133244">Sparepay</span><span style="width:1px;height:20px;background:#e3e3e8"></span><span class="small" style="font-size:10px;color:#8a8098">by</span><img src="../assets/logos/prism-mono-dark.svg" width="17" style="border-radius:5px"/><span style="font-family:var(--rounded);font-weight:700;font-size:12px;color:#17121c">AmarasApps</span></div><div class="cap">on light — product page footer</div></div>
+    <div class="scene"><div class="banner" style="height:60px;background:#141018;gap:8px;justify-content:center"><span style="font-family:var(--rounded);font-weight:800;font-size:15px;color:#fff">Sparepay</span><span style="width:1px;height:20px;background:#2f2740"></span><span class="small" style="font-size:10px;color:#B4A7C0">by</span><img src="../assets/logos/prism-gradient.svg" width="17" style="border-radius:5px"/><span style="font-family:var(--rounded);font-weight:700;font-size:12px;color:#fff">AmarasApps</span></div><div class="cap">on dark — shared chrome</div></div>
+  </div>
+  <div class="note">Sparepay keeps its own navy+gold on its pages; the AmarasApps mark appears there only as this small endorsement.</div>
+  <div class="foot">AMARASAPPS · SUB-BRANDS</div><div class="pagenum">05</div>
+</section>
+
+<!-- APPLIED SITE MOCKUP -->
+<section class="page">
+  <div class="head2"><h2>Applied — the site</h2><span class="badge">IN USE</span></div>
+  <p class="lead">The identity as the studio site will use it: dark aubergine hero → light body → dark footer. This is the demonstration the build follows.</p>
+  <div class="scene">
+    <!-- dark hero -->
+    <div style="padding:18px 20px 22px;background:radial-gradient(360px 200px at 12% -10%,rgba(167,139,250,.4),transparent 60%),radial-gradient(320px 220px at 118% 15%,rgba(236,72,153,.32),transparent 55%),linear-gradient(160deg,#141018,#221a2c);color:#F6F2FA">
+      <div style="display:flex;align-items:center;gap:9px;margin-bottom:16px"><img src="../assets/logos/prism-gradient.svg" width="26" style="border-radius:7px"/><span class="wordmark" style="font-size:14px">Amaras<span style="color:#C4B5FD">Apps</span></span><span style="flex:1"></span><span class="small" style="color:#B4A7C0;font-size:10px">Products · About</span></div>
+      <div style="font-family:var(--rounded);font-weight:800;font-size:26px;line-height:1.08;max-width:24ch">An independent <span style="background:linear-gradient(90deg,#C4B5FD,#EC4899,#FB7185);-webkit-background-clip:text;background-clip:text;color:transparent">software studio.</span></div>
+      <p style="font-size:11.5px;color:#B4A7C0;margin:10px 0 14px">Thoughtful apps, made with care.</p>
+      <span style="display:inline-block;padding:9px 16px;border-radius:10px;background:#6D28D9;color:#fff;font-family:var(--rounded);font-weight:700;font-size:12px">See our work</span>
+    </div>
+    <!-- light body -->
+    <div style="padding:18px 20px;background:#FAF7FC;color:#17121C">
+      <div class="paneltitle" style="color:#8a8098;margin-bottom:10px">Products</div>
+      <div class="cols3">
+        <div style="background:#fff;border:1px solid #efe8f3;border-top:3px solid #F5C542;border-radius:12px;padding:11px"><div style="display:flex;align-items:center;gap:7px;margin-bottom:5px"><img src="../assets/logos/prism-sparepay.svg" width="20" style="border-radius:6px"/><strong style="font-family:var(--rounded);font-size:12px">Sparepay</strong></div><p style="font-size:9.5px;color:#61566B;margin:0 0 6px">Budget from payday to payday.</p><span style="font-size:9.5px;font-weight:700;color:#6D28D9">Learn more →</span></div>
+        <div style="background:#fff;border:1px solid #efe8f3;border-top:3px solid #34D399;border-radius:12px;padding:11px;opacity:.92"><div style="display:flex;align-items:center;gap:7px;margin-bottom:5px"><div style="width:20px;height:20px;border-radius:6px;background:#eef2f6;display:grid;place-items:center;color:#94a3b8;font-weight:800;font-size:10px">?</div><strong style="font-family:var(--rounded);font-size:12px;color:#94a3b8">Coming soon</strong></div><p style="font-size:9.5px;color:#94a3b8;margin:0">Product two.</p></div>
+        <div style="background:#fff;border:1px solid #efe8f3;border-top:3px solid #38BDF8;border-radius:12px;padding:11px;opacity:.92"><div style="display:flex;align-items:center;gap:7px;margin-bottom:5px"><div style="width:20px;height:20px;border-radius:6px;background:#eef2f6;display:grid;place-items:center;color:#94a3b8;font-weight:800;font-size:10px">?</div><strong style="font-family:var(--rounded);font-size:12px;color:#94a3b8">Coming soon</strong></div><p style="font-size:9.5px;color:#94a3b8;margin:0">Product three.</p></div>
+      </div>
+    </div>
+    <!-- dark footer -->
+    <div style="padding:14px 20px;background:#141018;color:#B4A7C0;font-size:10px;display:flex;justify-content:space-between;align-items:center"><span style="display:flex;align-items:center;gap:7px"><img src="../assets/logos/prism-gradient.svg" width="18" style="border-radius:5px"/> © 2026 AmarasApps</span><span style="color:#8a7f99">support@amarasapps.com</span></div>
+  </div>
+  <div class="note">Next: this becomes <span class="mono">index.html</span> with rich, reduced-motion-gated scroll animation. Sparepay's own pages use its navy+gold, not this palette.</div>
+  <div class="foot">AMARASAPPS · APPLIED</div><div class="pagenum">06</div>
+</section>
+
+</body>
+</html>

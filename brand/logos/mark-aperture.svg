@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" role="img" aria-label="AmarasApps — Prism mark">
+  <defs>
+    <linearGradient id="prBg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#0B0C0E"/>
+      <stop offset="1" stop-color="#191B20"/>
+    </linearGradient>
+    <linearGradient id="prTop" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#6AA6FF"/><stop offset="1" stop-color="#3B82F6"/></linearGradient>
+    <linearGradient id="prLeft" x1="0" y1="1" x2="1" y2="0"><stop offset="0" stop-color="#3B82F6"/><stop offset="1" stop-color="#5468F0"/></linearGradient>
+    <linearGradient id="prRight" x1="1" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#9B8CFF"/><stop offset="1" stop-color="#6D5EF6"/></linearGradient>
+  </defs>
+  <rect x="16" y="16" width="480" height="480" rx="112" fill="url(#prBg)"/>
+  <!-- Chevron 'A' apex built from three offset facets = prism refracting -->
+  <g stroke-linejoin="round">
+    <!-- back plate faint -->
+    <path d="M256 120 L392 372 L120 372 Z" fill="#ffffff" opacity="0.04"/>
+    <!-- left facet -->
+    <path d="M256 150 L168 356 L214 356 L256 256 Z" fill="url(#prLeft)"/>
+    <!-- right facet -->
+    <path d="M256 150 L344 356 L298 356 L256 256 Z" fill="url(#prRight)"/>
+    <!-- apex facet -->
+    <path d="M256 150 L214 356 L298 356 Z" fill="url(#prTop)" opacity="0.0"/>
+    <!-- crossbar as a refracted sliver -->
+    <path d="M222 300 L290 300 L276 336 L236 336 Z" fill="#ffffff" opacity="0.9"/>
+  </g>
+</svg>

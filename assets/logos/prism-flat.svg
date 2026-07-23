@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" role="img" aria-label="AmarasApps">
+  <rect x="16" y="16" width="480" height="480" rx="112" fill="#6D28D9"/>
+  <g stroke-linejoin="round">
+    <path d="M256 150 L168 356 L214 356 L256 256 Z" fill="#ffffff"/>
+    <path d="M256 150 L344 356 L298 356 L256 256 Z" fill="#ffffff" opacity="0.7"/>
+    <path d="M222 300 L290 300 L276 336 L236 336 Z" fill="#ffffff"/>
+  </g>
+</svg>

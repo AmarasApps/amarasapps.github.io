@@ -1,0 +1,501 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AmarasApps — Brand & Identity Folio</title>
+<style>
+  :root{
+    --page-w:210mm; --page-h:297mm; --pad:15mm;
+    --sans:-apple-system,BlinkMacSystemFont,"SF Pro Text","Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+    --rounded:"SF Pro Rounded",ui-rounded,-apple-system,"Segoe UI",system-ui,sans-serif;
+    --mono:ui-monospace,"SF Mono",Menlo,Consolas,monospace;
+    --ink:#14202b; --ink-soft:#46586a; --muted:#7c8a98; --line:#e4e8ec;
+  }
+  *{box-sizing:border-box;-webkit-print-color-adjust:exact;print-color-adjust:exact;}
+  html,body{margin:0;padding:0;background:#52606d;font-family:var(--sans);color:var(--ink);}
+  .page{position:relative;width:var(--page-w);min-height:var(--page-h);background:#fff;margin:10mm auto;padding:var(--pad);box-shadow:0 6px 30px rgba(0,0,0,.35);overflow:hidden;page-break-after:always;}
+  .page:last-child{page-break-after:auto;}
+  @media print{html,body{background:#fff;}.page{margin:0;box-shadow:none;width:auto;min-height:auto;}@page{size:A4;margin:0;}}
+
+  h1,h2,h3,h4{font-family:var(--rounded);font-weight:700;letter-spacing:-.02em;line-height:1.08;margin:0;}
+  p{line-height:1.55;}
+  .kicker{font-size:10.5px;letter-spacing:.28em;text-transform:uppercase;color:var(--muted);font-weight:700;}
+  .small{font-size:11.5px;color:var(--ink-soft);}
+  .mono{font-family:var(--mono);}
+  .pagenum{position:absolute;bottom:8mm;right:var(--pad);font-size:10px;color:var(--muted);font-family:var(--mono);}
+  .foot{position:absolute;bottom:8mm;left:var(--pad);font-size:10px;color:var(--muted);letter-spacing:.04em;}
+  hr.rule{border:0;border-top:1px solid var(--line);margin:12px 0;}
+  .head2{display:flex;align-items:baseline;justify-content:space-between;margin-bottom:4px;}
+  .head2 h2{font-size:28px;}
+  .badge{font-family:var(--mono);font-size:10px;letter-spacing:.1em;text-transform:uppercase;padding:4px 9px;border-radius:6px;}
+  .lead{color:var(--ink-soft);font-size:13px;max-width:78ch;margin:6px 0 12px;}
+  .paneltitle{font-family:var(--rounded);font-weight:700;font-size:11px;color:var(--muted);text-transform:uppercase;letter-spacing:.12em;margin-bottom:8px;}
+  .panel{border-radius:14px;padding:14px;border:1px solid var(--line);}
+  .cols{display:grid;grid-template-columns:1fr 1fr;gap:14px;align-items:start;}
+  .cols3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px;}
+  .cols4{display:grid;grid-template-columns:1fr 1fr 1fr 1fr;gap:12px;}
+  .note{font-size:11px;color:var(--ink-soft);background:#f6f8fb;border-left:3px solid #3B82F6;padding:9px 12px;border-radius:0 8px 8px 0;margin-top:10px;}
+  .note.warn{border-color:#b45309;background:#fff7ed;}
+
+  /* swatches */
+  .swatches{display:grid;grid-template-columns:repeat(6,1fr);gap:8px;margin:8px 0;}
+  .chipc{border-radius:10px;overflow:hidden;border:1px solid var(--line);}
+  .chipc .col{height:54px;}
+  .chipc .meta{padding:5px 7px;font-size:9.5px;line-height:1.3;}
+  .chipc .meta .role{font-weight:700;color:var(--ink);font-family:var(--rounded);font-size:10px;}
+  .chipc .meta .hex{font-family:var(--mono);color:var(--ink-soft);font-size:9px;}
+
+  /* WCAG table */
+  table.wcag{width:100%;border-collapse:collapse;font-size:10px;margin-top:6px;}
+  table.wcag th,table.wcag td{text-align:left;padding:4px 6px;border-bottom:1px solid var(--line);}
+  table.wcag th{font-family:var(--rounded);font-size:9px;text-transform:uppercase;letter-spacing:.08em;color:var(--muted);}
+  table.wcag td.mono{font-family:var(--mono);font-size:9px;}
+  .tag{font-family:var(--mono);font-size:8.5px;font-weight:700;padding:2px 6px;border-radius:5px;}
+  .t-aaa{background:#dcfce7;color:#14532d;}.t-aa{background:#dbeafe;color:#1e3a8a;}
+  .t-aal{background:#fef9c3;color:#713f12;}.t-fail{background:#fee2e2;color:#7f1d1d;}
+  .dot{display:inline-block;width:11px;height:11px;border-radius:3px;vertical-align:middle;margin-right:5px;border:1px solid rgba(0,0,0,.12);}
+
+  /* logo scenario tiles */
+  .scene{border-radius:12px;overflow:hidden;border:1px solid var(--line);}
+  .scene .cap{padding:6px 8px;font-size:9.5px;color:var(--muted);font-family:var(--mono);border-top:1px solid var(--line);background:#fafbfc;}
+  .tile{display:flex;align-items:center;justify-content:center;}
+  .appicon{border-radius:22%;overflow:hidden;box-shadow:0 6px 16px rgba(0,0,0,.25);}
+  .banner{display:flex;align-items:center;gap:12px;padding:0 18px;}
+  .wordmark{font-family:var(--rounded);font-weight:800;letter-spacing:-.02em;}
+  .ogcard{display:flex;flex-direction:column;justify-content:center;align-items:center;gap:10px;}
+
+  .logo-hero{display:flex;align-items:center;gap:14px;padding:14px;border-radius:14px;}
+  .cover{background:radial-gradient(1200px 500px at 20% -10%,rgba(155,140,255,.35),transparent 60%),radial-gradient(900px 500px at 110% 30%,rgba(59,130,246,.45),transparent 55%),linear-gradient(160deg,#0D0B1A 0%,#141233 55%,#0D0B1A 100%);color:#fff;display:flex;flex-direction:column;justify-content:space-between;}
+  .cover h1{font-size:56px;margin:0;background:linear-gradient(90deg,#fff,#cfd0ff 55%,#9B8CFF);-webkit-background-clip:text;background-clip:text;color:transparent;}
+  .cover .sub{font-size:17px;color:#b9b6d4;max-width:36ch;line-height:1.5;}
+  .cover .chip{border:1px solid rgba(255,255,255,.22);background:rgba(255,255,255,.07);padding:6px 12px;border-radius:999px;font-size:12px;font-family:var(--mono);color:#dcdaf0;}
+</style>
+</head>
+<body>
+
+<!-- ===================== COVER ===================== -->
+<section class="page cover">
+  <div style="display:flex;align-items:center;gap:14px">
+    <img src="logos/mark-peak.svg" width="60" height="60" style="border-radius:15px"/>
+    <span class="kicker" style="color:#a99fe0">Brand &amp; Identity System</span>
+  </div>
+  <div>
+    <h1>AmarasApps</h1>
+    <p class="sub">The identity for an independent software studio — logos, palettes, and the system that lets each product stand on its own.</p>
+    <div style="display:flex;gap:10px;flex-wrap:wrap;margin-top:22px">
+      <span class="chip">4 logo concepts</span>
+      <span class="chip">3 studio palettes</span>
+      <span class="chip">Studio ≠ product, by design</span>
+      <span class="chip">WCAG AA / AAA verified</span>
+    </div>
+  </div>
+  <div>
+    <div style="display:flex;gap:14px;align-items:center;margin-bottom:18px">
+      <img src="logos/mark-orbit.svg" width="52" style="border-radius:13px"/>
+      <img src="logos/mark-aperture.svg" width="52" style="border-radius:13px"/>
+      <img src="logos/mark-stack.svg" width="52" style="border-radius:13px"/>
+      <span class="small" style="color:#8a86ad">Peak · Orbit · Prism · Stack — four directions inside</span>
+    </div>
+    <p class="small" style="color:#7f7ca3">Prepared 22 Jul 2026 · Studio identity is deliberately category-agnostic — not tied to finance or to any single product.</p>
+  </div>
+  <div class="foot" style="color:#5a568a">AMARASAPPS · CONFIDENTIAL DRAFT</div>
+  <div class="pagenum" style="color:#5a568a">01</div>
+</section>
+
+<!-- ===================== BRAND SEPARATION ===================== -->
+<section class="page">
+  <div class="head2"><h2>Studio ≠ Product</h2><span class="badge" style="background:#efe8ff;color:#5b21b6">STRATEGY</span></div>
+  <p class="lead">The key correction in this revision: <strong>AmarasApps and Sparepay are two different brands.</strong> AmarasApps is the <em>studio</em> — it should feel like a versatile maker of software of <strong>any</strong> category (a game, a utility, a creative tool — not only finance, not only “private on-device”). Sparepay is one <em>product</em> with its own finance-flavoured identity (navy + gold). They are related the way <strong>a publisher relates to a title</strong> — connected by quality and a small “by AmarasApps” endorsement, not by sharing a colour scheme.</p>
+
+  <div class="cols">
+    <div class="panel">
+      <div class="paneltitle">AmarasApps — the studio</div>
+      <p class="small"><strong>Personality:</strong> modern, versatile, technical, optimistic. Category-neutral.<br><strong>Palette family:</strong> cool indigo / violet / electric-blue “software” tones (proposed on the next pages) — deliberately <em>not</em> Sparepay's navy+gold.<br><strong>Where it appears:</strong> the amarasapps.com landing page, the footer of every product, “by AmarasApps” endorsements, social/OG cards.</p>
+    </div>
+    <div class="panel">
+      <div class="paneltitle">Sparepay — a product</div>
+      <p class="small"><strong>Personality:</strong> calm, trustworthy, money-smart.<br><strong>Palette:</strong> its own — navy <span class="mono">#133244</span> + gold <span class="mono">#F5C542</span> (from its icon).<br><strong>Relationship:</strong> lives on its own product page under the studio site, carries a small AmarasApps endorsement mark, but keeps its distinct look. Future products do the same, each with their own accent.</p>
+    </div>
+  </div>
+
+  <div class="note">The connective tissue is <strong>the system, not the colour</strong>: shared typography (SF Pro Rounded), shared layout language, shared motion, and the AmarasApps logo as a consistent endorsement. This lets a bright game and a serious finance app both sit under the studio without clashing.</div>
+
+  <hr class="rule">
+  <div class="paneltitle">What this folio contains</div>
+  <div class="cols4">
+    <div class="panel"><strong style="font-family:var(--rounded);font-size:12px">1 · Logos</strong><p class="small">4 concepts, shown as app icons, banners/wordmarks, OG share cards, favicons — across schemes &amp; styles (flat, gradient, liquid-glass, skeuomorphic).</p></div>
+    <div class="panel"><strong style="font-family:var(--rounded);font-size:12px">2 · Palettes</strong><p class="small">3 studio directions — Nebula, Monolith, Aurora — each WCAG-verified with light + dark.</p></div>
+    <div class="panel"><strong style="font-family:var(--rounded);font-size:12px">3 · Logos in scheme</strong><p class="small">The chosen mark rendered inside each palette so colour + form are judged together.</p></div>
+    <div class="panel"><strong style="font-family:var(--rounded);font-size:12px">4 · Sparepay link</strong><p class="small">How the product's own identity coexists with the studio brand.</p></div>
+  </div>
+  <div class="foot">AMARASAPPS · BRAND FOLIO</div>
+  <div class="pagenum">02</div>
+</section>
+
+<!-- ===================== LOGO CONCEPTS OVERVIEW ===================== -->
+<section class="page">
+  <div class="head2"><h2>Logo concepts</h2><span class="badge" style="background:#e8f0ff;color:#1e40af">MARKS</span></div>
+  <p class="lead">Four distinct directions for the AmarasApps mark. All are built as <strong>scalable SVG</strong>, all resolve to a clean silhouette at favicon size, and all read as an “A” or a studio idea without naming a category. Shown here on their native dark tiles.</p>
+
+  <div class="cols4">
+    <div class="scene"><div class="tile" style="height:150px;background:#1b2030"><img src="logos/mark-peak.svg" width="112"/></div><div class="cap">PEAK · bold gradient A</div></div>
+    <div class="scene"><div class="tile" style="height:150px;background:#1b2030"><img src="logos/mark-orbit.svg" width="112"/></div><div class="cap">ORBIT · system / platform</div></div>
+    <div class="scene"><div class="tile" style="height:150px;background:#1b2030"><img src="logos/mark-aperture.svg" width="112"/></div><div class="cap">PRISM · faceted A</div></div>
+    <div class="scene"><div class="tile" style="height:150px;background:#1b2030"><img src="logos/mark-stack.svg" width="112"/></div><div class="cap">STACK · layered glass</div></div>
+  </div>
+
+  <div class="cols4" style="margin-top:12px">
+    <div class="panel"><strong style="font-family:var(--rounded);font-size:12px">Peak</strong><p class="small">A confident monogram “A”. Reads instantly, works at any size, most flexible. Safest, most timeless.</p><p class="small mono" style="color:#7c8a98">Meaning: ascent, the letter A.</p></div>
+    <div class="panel"><strong style="font-family:var(--rounded);font-size:12px">Orbit</strong><p class="small">A core + orbiting satellite. Says “platform / system of things.” Category-neutral &amp; distinctive.</p><p class="small mono" style="color:#7c8a98">Meaning: a studio things orbit around.</p></div>
+    <div class="panel"><strong style="font-family:var(--rounded);font-size:12px">Prism</strong><p class="small">A faceted “A” refracting light — one input, many outputs (many products). Techy, premium.</p><p class="small mono" style="color:#7c8a98">Meaning: creativity, refraction.</p></div>
+    <div class="panel"><strong style="font-family:var(--rounded);font-size:12px">Stack</strong><p class="small">Layered glass sheets = a stack of apps. Most literal “studio” story; liquid-glass native.</p><p class="small mono" style="color:#7c8a98">Meaning: a collection / a suite.</p></div>
+  </div>
+
+  <div class="note">The next page shows every concept applied across <strong>real usage scenarios</strong> — app icon, share/OG banner, favicon, monochrome — and the page after shows the four <strong>rendering styles</strong> (flat, gradient, liquid-glass, skeuomorphic) so you can pick a form <em>and</em> a finish.</div>
+  <div class="foot">AMARASAPPS · LOGO CONCEPTS</div>
+  <div class="pagenum">03</div>
+</section>
+
+<!-- ===================== LOGOS IN SCENARIOS ===================== -->
+<section class="page">
+  <div class="head2"><h2>Marks in every scenario</h2><span class="badge" style="background:#e8f0ff;color:#1e40af">USAGE</span></div>
+  <p class="lead">Each concept must survive real placements: the App Store / home-screen icon, a horizontal lockup with the wordmark, a 1200×630 social share card (Twitter/X, LinkedIn, iMessage), and a tiny favicon. Here is each mark across all four.</p>
+
+  <!-- Row per concept -->
+  <div style="display:flex;flex-direction:column;gap:10px">
+    <!-- PEAK -->
+    <div>
+      <div class="paneltitle">Peak</div>
+      <div style="display:grid;grid-template-columns:96px 1.5fr 2fr 70px;gap:10px;align-items:center">
+        <div class="scene"><div class="tile" style="height:80px;background:#eef1f5"><img src="logos/mark-peak.svg" width="60" style="border-radius:14px"/></div><div class="cap">app icon</div></div>
+        <div class="scene"><div class="banner" style="height:80px;background:#0D0B1A"><img src="logos/mark-peak.svg" width="34" style="border-radius:9px"/><span class="wordmark" style="color:#F3F1FB;font-size:18px">AmarasApps</span></div><div class="cap">horizontal lockup</div></div>
+        <div class="scene"><div class="ogcard" style="height:80px;background:radial-gradient(300px 120px at 20% 0,rgba(59,130,246,.4),transparent 60%),linear-gradient(135deg,#0D0B1A,#141233)"><div style="display:flex;gap:10px;align-items:center"><img src="logos/mark-peak.svg" width="30" style="border-radius:8px"/><span class="wordmark" style="color:#fff;font-size:16px">AmarasApps</span></div><span class="small" style="color:#a99fe0;font-size:10px">Independent software studio</span></div><div class="cap">OG share card 1200×630</div></div>
+        <div class="scene"><div class="tile" style="height:80px;background:#fff"><img src="logos/mark-peak.svg" width="26" style="border-radius:6px"/></div><div class="cap">favicon</div></div>
+      </div>
+    </div>
+    <!-- ORBIT -->
+    <div>
+      <div class="paneltitle">Orbit</div>
+      <div style="display:grid;grid-template-columns:96px 1.5fr 2fr 70px;gap:10px;align-items:center">
+        <div class="scene"><div class="tile" style="height:80px;background:#eef1f5"><img src="logos/mark-orbit.svg" width="60" style="border-radius:14px"/></div><div class="cap">app icon</div></div>
+        <div class="scene"><div class="banner" style="height:80px;background:#0D0B1A"><img src="logos/mark-orbit.svg" width="34" style="border-radius:9px"/><span class="wordmark" style="color:#F3F1FB;font-size:18px">AmarasApps</span></div><div class="cap">horizontal lockup</div></div>
+        <div class="scene"><div class="ogcard" style="height:80px;background:radial-gradient(300px 120px at 20% 0,rgba(155,140,255,.4),transparent 60%),linear-gradient(135deg,#0D0B1A,#141233)"><div style="display:flex;gap:10px;align-items:center"><img src="logos/mark-orbit.svg" width="30" style="border-radius:8px"/><span class="wordmark" style="color:#fff;font-size:16px">AmarasApps</span></div><span class="small" style="color:#a99fe0;font-size:10px">Independent software studio</span></div><div class="cap">OG share card 1200×630</div></div>
+        <div class="scene"><div class="tile" style="height:80px;background:#fff"><img src="logos/mark-orbit.svg" width="26" style="border-radius:6px"/></div><div class="cap">favicon</div></div>
+      </div>
+    </div>
+    <!-- PRISM -->
+    <div>
+      <div class="paneltitle">Prism</div>
+      <div style="display:grid;grid-template-columns:96px 1.5fr 2fr 70px;gap:10px;align-items:center">
+        <div class="scene"><div class="tile" style="height:80px;background:#eef1f5"><img src="logos/mark-aperture.svg" width="60" style="border-radius:14px"/></div><div class="cap">app icon</div></div>
+        <div class="scene"><div class="banner" style="height:80px;background:#0D0B1A"><img src="logos/mark-aperture.svg" width="34" style="border-radius:9px"/><span class="wordmark" style="color:#F3F1FB;font-size:18px">AmarasApps</span></div><div class="cap">horizontal lockup</div></div>
+        <div class="scene"><div class="ogcard" style="height:80px;background:radial-gradient(300px 120px at 20% 0,rgba(59,130,246,.4),transparent 60%),linear-gradient(135deg,#0B0C0E,#191B20)"><div style="display:flex;gap:10px;align-items:center"><img src="logos/mark-aperture.svg" width="30" style="border-radius:8px"/><span class="wordmark" style="color:#fff;font-size:16px">AmarasApps</span></div><span class="small" style="color:#9AA1AA;font-size:10px">Independent software studio</span></div><div class="cap">OG share card 1200×630</div></div>
+        <div class="scene"><div class="tile" style="height:80px;background:#fff"><img src="logos/mark-aperture.svg" width="26" style="border-radius:6px"/></div><div class="cap">favicon</div></div>
+      </div>
+    </div>
+    <!-- STACK -->
+    <div>
+      <div class="paneltitle">Stack</div>
+      <div style="display:grid;grid-template-columns:96px 1.5fr 2fr 70px;gap:10px;align-items:center">
+        <div class="scene"><div class="tile" style="height:80px;background:#eef1f5"><img src="logos/mark-stack.svg" width="60" style="border-radius:14px"/></div><div class="cap">app icon</div></div>
+        <div class="scene"><div class="banner" style="height:80px;background:#0D0B1A"><img src="logos/mark-stack.svg" width="34" style="border-radius:9px"/><span class="wordmark" style="color:#F3F1FB;font-size:18px">AmarasApps</span></div><div class="cap">horizontal lockup</div></div>
+        <div class="scene"><div class="ogcard" style="height:80px;background:radial-gradient(300px 120px at 20% 0,rgba(109,94,246,.45),transparent 60%),linear-gradient(135deg,#101226,#0B0C0E)"><div style="display:flex;gap:10px;align-items:center"><img src="logos/mark-stack.svg" width="30" style="border-radius:8px"/><span class="wordmark" style="color:#fff;font-size:16px">AmarasApps</span></div><span class="small" style="color:#9B8CFF;font-size:10px">Independent software studio</span></div><div class="cap">OG share card 1200×630</div></div>
+        <div class="scene"><div class="tile" style="height:80px;background:#fff"><img src="logos/mark-stack.svg" width="26" style="border-radius:6px"/></div><div class="cap">favicon</div></div>
+      </div>
+    </div>
+  </div>
+  <div class="note">All four hold up at favicon scale and in a horizontal lockup. <strong>Orbit</strong> and <strong>Stack</strong> tell the strongest “studio” story; <strong>Peak</strong> is the most versatile and safest; <strong>Prism</strong> is the most premium/techy.</div>
+  <div class="foot">AMARASAPPS · MARKS IN CONTEXT</div>
+  <div class="pagenum">04</div>
+</section>
+
+<!-- ===================== RENDERING STYLES ===================== -->
+<section class="page">
+  <div class="head2"><h2>Rendering styles</h2><span class="badge" style="background:#e8f0ff;color:#1e40af">FINISH</span></div>
+  <p class="lead">Form is one axis; <em>finish</em> is another. The same mark can be delivered flat (versatile, print-safe), gradient (default, modern), liquid-glass (depth + highlight, matches Apple's current language), or skeuomorphic (rich, tactile). Here the “Peak” A is shown in all four so you can judge finish independently of concept.</p>
+
+  <div class="cols4">
+    <!-- flat -->
+    <div class="scene">
+      <div class="tile" style="height:130px;background:#f2f4f7">
+        <svg viewBox="0 0 512 512" width="104"><rect x="16" y="16" width="480" height="480" rx="112" fill="#3B82F6"/><path d="M256 132 L360 380 M256 132 L152 380 M198 300 L314 300" fill="none" stroke="#fff" stroke-width="46" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </div><div class="cap">FLAT · single colour, print-safe</div>
+    </div>
+    <!-- gradient -->
+    <div class="scene">
+      <div class="tile" style="height:130px;background:#f2f4f7"><img src="logos/mark-peak.svg" width="104"/></div>
+      <div class="cap">GRADIENT · default, modern</div>
+    </div>
+    <!-- liquid glass -->
+    <div class="scene">
+      <div class="tile" style="height:130px;background:#1b2030">
+        <svg viewBox="0 0 512 512" width="104">
+          <defs>
+            <linearGradient id="lgbg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#3B82F6" stop-opacity=".55"/><stop offset="1" stop-color="#6D5EF6" stop-opacity=".5"/></linearGradient>
+            <linearGradient id="lgsheen" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#fff" stop-opacity=".65"/><stop offset=".45" stop-color="#fff" stop-opacity="0"/></linearGradient>
+          </defs>
+          <rect x="16" y="16" width="480" height="480" rx="112" fill="url(#lgbg)"/>
+          <rect x="24" y="24" width="464" height="230" rx="104" fill="url(#lgsheen)"/>
+          <rect x="16" y="16" width="480" height="480" rx="112" fill="none" stroke="#fff" stroke-opacity=".35" stroke-width="2"/>
+          <path d="M256 132 L360 380 M256 132 L152 380 M198 300 L314 300" fill="none" stroke="#fff" stroke-width="46" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </div><div class="cap">LIQUID GLASS · translucent + sheen</div>
+    </div>
+    <!-- skeuomorphic -->
+    <div class="scene">
+      <div class="tile" style="height:130px;background:#f2f4f7">
+        <svg viewBox="0 0 512 512" width="104">
+          <defs>
+            <linearGradient id="skbg" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#5aa0ff"/><stop offset=".5" stop-color="#3B82F6"/><stop offset="1" stop-color="#2b5fd0"/></linearGradient>
+            <radialGradient id="sktop" cx="50%" cy="0%" r="80%"><stop offset="0" stop-color="#fff" stop-opacity=".55"/><stop offset="1" stop-color="#fff" stop-opacity="0"/></radialGradient>
+            <filter id="skinner"><feOffset dy="3"/><feGaussianBlur stdDeviation="3" result="o"/><feComposite in="SourceGraphic" in2="o" operator="over"/></filter>
+          </defs>
+          <rect x="16" y="20" width="480" height="480" rx="112" fill="#1f3a75"/>
+          <rect x="16" y="16" width="480" height="480" rx="112" fill="url(#skbg)"/>
+          <path d="M40 60 Q256 -10 472 60 L472 250 Q256 150 40 250 Z" fill="url(#sktop)"/>
+          <path d="M256 132 L360 380 M256 132 L152 380 M198 300 L314 300" fill="none" stroke="#0e2a5e" stroke-width="50" stroke-linecap="round" stroke-linejoin="round" opacity=".35"/>
+          <path d="M256 128 L360 376 M256 128 L152 376 M198 296 L314 296" fill="none" stroke="#fff" stroke-width="46" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </div><div class="cap">SKEUOMORPHIC · glossy, tactile</div>
+    </div>
+  </div>
+
+  <div class="cols" style="margin-top:14px">
+    <div class="panel">
+      <div class="paneltitle">Recommendation on finish</div>
+      <p class="small"><strong>Gradient</strong> as the primary (App Store icon, site). <strong>Flat</strong> as the mandatory secondary — for monochrome, print, embroidery, tiny sizes, and the “by AmarasApps” endorsement. <strong>Liquid-glass</strong> for hero/marketing moments and if you want to echo Apple's current OS aesthetic. <strong>Skeuomorphic</strong> is beautiful but dates faster and is harder to keep crisp — offer it only as an alternate app-icon.</p>
+    </div>
+    <div class="panel">
+      <div class="paneltitle">Monochrome / endorsement test</div>
+      <div style="display:flex;gap:16px;align-items:center;justify-content:center;height:90px">
+        <svg viewBox="0 0 512 512" width="54"><rect x="16" y="16" width="480" height="480" rx="112" fill="#0E1013"/><path d="M256 132 L360 380 M256 132 L152 380 M198 300 L314 300" fill="none" stroke="#fff" stroke-width="46" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        <svg viewBox="0 0 512 512" width="54"><rect x="16" y="16" width="480" height="480" rx="112" fill="#fff" stroke="#e4e8ec"/><path d="M256 132 L360 380 M256 132 L152 380 M198 300 L314 300" fill="none" stroke="#0E1013" stroke-width="46" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        <span class="small" style="max-width:22ch">Knockout works both ways — essential for a studio mark that appears on every product.</span>
+      </div>
+    </div>
+  </div>
+  <div class="foot">AMARASAPPS · RENDERING STYLES</div>
+  <div class="pagenum">05</div>
+</section>
+
+<!-- ===================== PALETTE A: NEBULA ===================== -->
+<section class="page">
+  <div class="head2"><h2>Studio palette A — Nebula</h2><span class="badge" style="background:#0D0B1A;color:#9B8CFF">01 / INDIGO→VIOLET</span></div>
+  <p class="lead">A deep indigo canvas with violet glow — “software / night-sky” energy, category-neutral and premium. This is the most distinctive-from-Sparepay direction (cool purple vs. Sparepay's warm navy+gold). Recommended pairing: <strong>Orbit</strong> or <strong>Prism</strong>.</p>
+  <div class="swatches">
+    <div class="chipc"><div class="col" style="background:#0D0B1A"></div><div class="meta"><div class="role">Canvas</div><div class="hex">#0D0B1A</div></div></div>
+    <div class="chipc"><div class="col" style="background:#171531"></div><div class="meta"><div class="role">Surface</div><div class="hex">#171531</div></div></div>
+    <div class="chipc"><div class="col" style="background:#F3F1FB"></div><div class="meta"><div class="role">Text</div><div class="hex">#F3F1FB</div></div></div>
+    <div class="chipc"><div class="col" style="background:#A29DC4"></div><div class="meta"><div class="role">Muted</div><div class="hex">#A29DC4</div></div></div>
+    <div class="chipc"><div class="col" style="background:linear-gradient(135deg,#6D5EF6,#A855F7)"></div><div class="meta"><div class="role">Accent</div><div class="hex">#6D5EF6→#A855F7</div></div></div>
+    <div class="chipc"><div class="col" style="background:#9B8CFF"></div><div class="meta"><div class="role">Link</div><div class="hex">#9B8CFF</div></div></div>
+  </div>
+  <div class="cols" style="margin-top:8px">
+    <div class="scene">
+      <div style="padding:16px;background:radial-gradient(400px 200px at 15% -10%,rgba(168,85,247,.3),transparent 60%),radial-gradient(360px 220px at 120% 20%,rgba(109,94,246,.4),transparent 55%),linear-gradient(160deg,#0D0B1A,#141233);color:#F3F1FB;height:200px;display:flex;flex-direction:column;gap:10px">
+        <div style="display:flex;align-items:center;gap:9px"><img src="logos/mark-orbit.svg" width="26" style="border-radius:7px"/><span class="wordmark" style="font-size:13px">AmarasApps</span><span style="flex:1"></span><span class="small" style="color:#A29DC4;font-size:10px">Products · About</span></div>
+        <div style="font-family:var(--rounded);font-weight:800;font-size:20px;line-height:1.1;margin-top:4px">We build software<br><span style="background:linear-gradient(90deg,#C4B5FD,#9B8CFF);-webkit-background-clip:text;background-clip:text;color:transparent">worth keeping.</span></div>
+        <p style="font-size:10.5px;color:#A29DC4;margin:0">A small studio shipping thoughtful apps.</p>
+        <span style="display:inline-block;padding:8px 14px;border-radius:9px;background:linear-gradient(135deg,#6D5EF6,#A855F7);color:#fff;font-family:var(--rounded);font-weight:700;font-size:11.5px;width:max-content">See our work</span>
+      </div><div class="cap">primary — dark hero</div>
+    </div>
+    <div class="scene">
+      <div style="padding:16px;background:#F7F6FC;color:#14121F;height:200px;display:flex;flex-direction:column;gap:10px">
+        <div style="display:flex;align-items:center;gap:9px"><img src="logos/mark-orbit.svg" width="26" style="border-radius:7px"/><span class="wordmark" style="font-size:13px">AmarasApps</span><span style="flex:1"></span><span class="small" style="color:#5E5872;font-size:10px">Products · About</span></div>
+        <div style="background:#fff;border:1px solid #ece9f5;border-radius:12px;padding:12px;margin-top:4px">
+          <div class="small" style="color:#5E5872;text-transform:uppercase;letter-spacing:.1em;font-size:9px">Featured</div>
+          <div style="font-family:var(--rounded);font-weight:800;font-size:16px">Sparepay</div>
+          <p style="font-size:10px;color:#5E5872;margin:4px 0 0">Budget from payday to payday.</p>
+        </div>
+        <div style="display:flex;gap:8px"><span style="padding:8px 14px;border-radius:9px;background:#6D5EF6;color:#fff;font-family:var(--rounded);font-weight:700;font-size:11.5px">Primary</span><span style="padding:8px 14px;border-radius:9px;border:1px solid #cfc7f0;color:#5b21b6;font-family:var(--rounded);font-weight:700;font-size:11.5px">Ghost</span></div>
+      </div><div class="cap">inverse — light body</div>
+    </div>
+  </div>
+  <table class="wcag">
+    <tr><th>Foreground</th><th>On</th><th>Ratio</th><th>Grade</th></tr>
+    <tr><td class="mono">#F3F1FB text</td><td class="mono">#0D0B1A</td><td class="mono">17.40</td><td><span class="tag t-aaa">AAA</span></td></tr>
+    <tr><td class="mono">#A29DC4 muted</td><td class="mono">#0D0B1A</td><td class="mono">7.55</td><td><span class="tag t-aaa">AAA</span></td></tr>
+    <tr><td class="mono">#9B8CFF link</td><td class="mono">#0D0B1A</td><td class="mono">7.03</td><td><span class="tag t-aaa">AAA</span></td></tr>
+    <tr><td class="mono">#A855F7 violet</td><td class="mono">#0D0B1A</td><td class="mono">4.91</td><td><span class="tag t-aa">AA</span></td></tr>
+    <tr><td class="mono">#14121F ink</td><td class="mono">#F7F6FC (light)</td><td class="mono">17.20</td><td><span class="tag t-aaa">AAA</span></td></tr>
+    <tr><td class="mono">#6D5EF6 accent</td><td class="mono">#FFFFFF (light)</td><td class="mono">4.58</td><td><span class="tag t-aa">AA</span></td></tr>
+  </table>
+  <p class="small" style="margin-top:5px"><strong>Note:</strong> pure indigo <span class="mono">#6D5EF6</span> on the dark canvas is AA-large (4.24); use <span class="mono">#9B8CFF</span> for small text/links on dark.</p>
+  <div class="foot">AMARASAPPS · PALETTE A — NEBULA</div>
+  <div class="pagenum">06</div>
+</section>
+
+<!-- ===================== PALETTE B: MONOLITH ===================== -->
+<section class="page">
+  <div class="head2"><h2>Studio palette B — Monolith</h2><span class="badge" style="background:#0B0C0E;color:#6AA6FF">02 / MONO + ELECTRIC BLUE</span></div>
+  <p class="lead">Near-neutral graphite with a single electric-blue accent. The most restrained, “engineering / pro-tool” direction — lets each product's own colour shine while the studio stays quiet. Recommended pairing: <strong>Prism</strong> or <strong>Peak</strong>.</p>
+  <div class="swatches">
+    <div class="chipc"><div class="col" style="background:#0B0C0E"></div><div class="meta"><div class="role">Canvas</div><div class="hex">#0B0C0E</div></div></div>
+    <div class="chipc"><div class="col" style="background:#17191D"></div><div class="meta"><div class="role">Surface</div><div class="hex">#17191D</div></div></div>
+    <div class="chipc"><div class="col" style="background:#F5F6F7"></div><div class="meta"><div class="role">Text</div><div class="hex">#F5F6F7</div></div></div>
+    <div class="chipc"><div class="col" style="background:#9AA1AA"></div><div class="meta"><div class="role">Muted</div><div class="hex">#9AA1AA</div></div></div>
+    <div class="chipc"><div class="col" style="background:#3B82F6"></div><div class="meta"><div class="role">Accent</div><div class="hex">#3B82F6</div></div></div>
+    <div class="chipc"><div class="col" style="background:#6AA6FF"></div><div class="meta"><div class="role">Link</div><div class="hex">#6AA6FF</div></div></div>
+  </div>
+  <div class="cols" style="margin-top:8px">
+    <div class="scene">
+      <div style="padding:16px;background:radial-gradient(380px 200px at 110% -10%,rgba(59,130,246,.35),transparent 55%),linear-gradient(160deg,#0B0C0E,#15171b);color:#F5F6F7;height:200px;display:flex;flex-direction:column;gap:10px">
+        <div style="display:flex;align-items:center;gap:9px"><img src="logos/mark-aperture.svg" width="26" style="border-radius:7px"/><span class="wordmark" style="font-size:13px">AmarasApps</span><span style="flex:1"></span><span class="small" style="color:#9AA1AA;font-size:10px">Products · About</span></div>
+        <div style="font-family:var(--rounded);font-weight:800;font-size:20px;line-height:1.1;margin-top:4px">Precision software,<br><span style="color:#6AA6FF">quietly made.</span></div>
+        <p style="font-size:10.5px;color:#9AA1AA;margin:0">Tools built with care, one at a time.</p>
+        <span style="display:inline-block;padding:8px 14px;border-radius:9px;background:#3B82F6;color:#fff;font-family:var(--rounded);font-weight:700;font-size:11.5px;width:max-content">See our work</span>
+      </div><div class="cap">primary — dark hero</div>
+    </div>
+    <div class="scene">
+      <div style="padding:16px;background:#FBFBFC;color:#0E1013;height:200px;display:flex;flex-direction:column;gap:10px">
+        <div style="display:flex;align-items:center;gap:9px"><img src="logos/mark-aperture.svg" width="26" style="border-radius:7px"/><span class="wordmark" style="font-size:13px">AmarasApps</span><span style="flex:1"></span><span class="small" style="color:#5C636C;font-size:10px">Products · About</span></div>
+        <div style="background:#fff;border:1px solid #eceef1;border-radius:12px;padding:12px;margin-top:4px">
+          <div class="small" style="color:#5C636C;text-transform:uppercase;letter-spacing:.1em;font-size:9px">Featured</div>
+          <div style="font-family:var(--rounded);font-weight:800;font-size:16px">Sparepay</div>
+          <p style="font-size:10px;color:#5C636C;margin:4px 0 0">Budget from payday to payday.</p>
+        </div>
+        <div style="display:flex;gap:8px"><span style="padding:8px 14px;border-radius:9px;background:#2563EB;color:#fff;font-family:var(--rounded);font-weight:700;font-size:11.5px">Primary</span><span style="padding:8px 14px;border-radius:9px;border:1px solid #cbd5e1;color:#1e40af;font-family:var(--rounded);font-weight:700;font-size:11.5px">Ghost</span></div>
+      </div><div class="cap">inverse — light body</div>
+    </div>
+  </div>
+  <table class="wcag">
+    <tr><th>Foreground</th><th>On</th><th>Ratio</th><th>Grade</th></tr>
+    <tr><td class="mono">#F5F6F7 text</td><td class="mono">#0B0C0E</td><td class="mono">18.08</td><td><span class="tag t-aaa">AAA</span></td></tr>
+    <tr><td class="mono">#9AA1AA muted</td><td class="mono">#0B0C0E</td><td class="mono">7.50</td><td><span class="tag t-aaa">AAA</span></td></tr>
+    <tr><td class="mono">#6AA6FF link</td><td class="mono">#0B0C0E</td><td class="mono">7.93</td><td><span class="tag t-aaa">AAA</span></td></tr>
+    <tr><td class="mono">#3B82F6 accent</td><td class="mono">#0B0C0E</td><td class="mono">5.32</td><td><span class="tag t-aa">AA</span></td></tr>
+    <tr><td class="mono">#0E1013 ink</td><td class="mono">#FBFBFC (light)</td><td class="mono">18.42</td><td><span class="tag t-aaa">AAA</span></td></tr>
+    <tr><td class="mono">#2563EB accent</td><td class="mono">#FFFFFF (light)</td><td class="mono">5.17</td><td><span class="tag t-aa">AA</span></td></tr>
+  </table>
+  <div class="foot">AMARASAPPS · PALETTE B — MONOLITH</div>
+  <div class="pagenum">07</div>
+</section>
+
+<!-- ===================== PALETTE C: AURORA ===================== -->
+<section class="page">
+  <div class="head2"><h2>Studio palette C — Aurora</h2><span class="badge" style="background:#141018;color:#EC4899">03 / VIOLET→MAGENTA→CORAL</span></div>
+  <p class="lead">The most expressive, playful direction — a violet→magenta→coral spectrum that says “creative studio, any category” (great if games or creative tools are on the roadmap). Boldest, furthest from finance. Recommended pairing: <strong>Prism</strong> or <strong>Stack</strong>.</p>
+  <div class="swatches">
+    <div class="chipc"><div class="col" style="background:#141018"></div><div class="meta"><div class="role">Canvas</div><div class="hex">#141018</div></div></div>
+    <div class="chipc"><div class="col" style="background:#211A2A"></div><div class="meta"><div class="role">Surface</div><div class="hex">#211A2A</div></div></div>
+    <div class="chipc"><div class="col" style="background:#F6F2FA"></div><div class="meta"><div class="role">Text</div><div class="hex">#F6F2FA</div></div></div>
+    <div class="chipc"><div class="col" style="background:#B4A7C0"></div><div class="meta"><div class="role">Muted</div><div class="hex">#B4A7C0</div></div></div>
+    <div class="chipc"><div class="col" style="background:linear-gradient(135deg,#A78BFA,#EC4899,#FB7185)"></div><div class="meta"><div class="role">Spectrum</div><div class="hex">violet→coral</div></div></div>
+    <div class="chipc"><div class="col" style="background:#C4B5FD"></div><div class="meta"><div class="role">Link</div><div class="hex">#C4B5FD</div></div></div>
+  </div>
+  <div class="cols" style="margin-top:8px">
+    <div class="scene">
+      <div style="padding:16px;background:radial-gradient(360px 200px at 12% -10%,rgba(236,72,153,.32),transparent 60%),radial-gradient(340px 220px at 120% 20%,rgba(167,139,250,.4),transparent 55%),linear-gradient(160deg,#141018,#221a2c);color:#F6F2FA;height:200px;display:flex;flex-direction:column;gap:10px">
+        <div style="display:flex;align-items:center;gap:9px"><img src="logos/mark-stack.svg" width="26" style="border-radius:7px"/><span class="wordmark" style="font-size:13px">AmarasApps</span><span style="flex:1"></span><span class="small" style="color:#B4A7C0;font-size:10px">Products · About</span></div>
+        <div style="font-family:var(--rounded);font-weight:800;font-size:20px;line-height:1.1;margin-top:4px">Ideas, shipped.<br><span style="background:linear-gradient(90deg,#C4B5FD,#EC4899,#FB7185);-webkit-background-clip:text;background-clip:text;color:transparent">Many kinds.</span></div>
+        <p style="font-size:10.5px;color:#B4A7C0;margin:0">A studio for apps, games and tools.</p>
+        <span style="display:inline-block;padding:8px 14px;border-radius:9px;background:linear-gradient(135deg,#7C3AED,#EC4899);color:#fff;font-family:var(--rounded);font-weight:700;font-size:11.5px;width:max-content">See our work</span>
+      </div><div class="cap">primary — dark hero</div>
+    </div>
+    <div class="scene">
+      <div style="padding:16px;background:#FAF7FC;color:#17121C;height:200px;display:flex;flex-direction:column;gap:10px">
+        <div style="display:flex;align-items:center;gap:9px"><img src="logos/mark-stack.svg" width="26" style="border-radius:7px"/><span class="wordmark" style="font-size:13px">AmarasApps</span><span style="flex:1"></span><span class="small" style="color:#61566B;font-size:10px">Products · About</span></div>
+        <div style="background:#fff;border:1px solid #efe8f3;border-radius:12px;padding:12px;margin-top:4px">
+          <div class="small" style="color:#61566B;text-transform:uppercase;letter-spacing:.1em;font-size:9px">Featured</div>
+          <div style="font-family:var(--rounded);font-weight:800;font-size:16px">Sparepay</div>
+          <p style="font-size:10px;color:#61566B;margin:4px 0 0">Budget from payday to payday.</p>
+        </div>
+        <div style="display:flex;gap:8px"><span style="padding:8px 14px;border-radius:9px;background:#7C3AED;color:#fff;font-family:var(--rounded);font-weight:700;font-size:11.5px">Primary</span><span style="padding:8px 14px;border-radius:9px;border:1px solid #e4d3f0;color:#7C3AED;font-family:var(--rounded);font-weight:700;font-size:11.5px">Ghost</span></div>
+      </div><div class="cap">inverse — light body</div>
+    </div>
+  </div>
+  <table class="wcag">
+    <tr><th>Foreground</th><th>On</th><th>Ratio</th><th>Grade</th></tr>
+    <tr><td class="mono">#F6F2FA text</td><td class="mono">#141018</td><td class="mono">17.01</td><td><span class="tag t-aaa">AAA</span></td></tr>
+    <tr><td class="mono">#B4A7C0 muted</td><td class="mono">#141018</td><td class="mono">8.26</td><td><span class="tag t-aaa">AAA</span></td></tr>
+    <tr><td class="mono">#C4B5FD link</td><td class="mono">#141018</td><td class="mono">10.18</td><td><span class="tag t-aaa">AAA</span></td></tr>
+    <tr><td class="mono">#EC4899 magenta</td><td class="mono">#141018</td><td class="mono">5.33</td><td><span class="tag t-aa">AA</span></td></tr>
+    <tr><td class="mono">#FFFFFF text</td><td class="mono">#7C3AED (light btn)</td><td class="mono">5.70</td><td><span class="tag t-aa">AA</span></td></tr>
+    <tr><td class="mono">#17121C ink</td><td class="mono">#FAF7FC (light)</td><td class="mono">17.35</td><td><span class="tag t-aaa">AAA</span></td></tr>
+  </table>
+  <div class="foot">AMARASAPPS · PALETTE C — AURORA</div>
+  <div class="pagenum">08</div>
+</section>
+
+<!-- ===================== SPAREPAY RELATIONSHIP ===================== -->
+<section class="page">
+  <div class="head2"><h2>How Sparepay coexists</h2><span class="badge" style="background:#133244;color:#F5C542">PRODUCT</span></div>
+  <p class="lead">Sparepay keeps its <strong>own</strong> identity — navy + gold — and simply carries an AmarasApps endorsement. Below: the studio brand (whichever palette you pick) hosting Sparepay's distinct product card, plus the “by AmarasApps” lockup used on the product's own page and store listing.</p>
+
+  <div class="cols">
+    <div class="scene">
+      <div style="padding:16px;background:linear-gradient(160deg,#0D0B1A,#141233);color:#F3F1FB;height:210px;display:flex;flex-direction:column;gap:10px">
+        <div style="display:flex;align-items:center;gap:9px"><img src="logos/mark-orbit.svg" width="24" style="border-radius:7px"/><span class="wordmark" style="font-size:12px">AmarasApps</span><span style="flex:1"></span><span class="small" style="color:#A29DC4;font-size:10px">Products</span></div>
+        <!-- Sparepay product card, its OWN colours -->
+        <div style="border-radius:12px;overflow:hidden;border:1px solid rgba(255,255,255,.08)">
+          <div style="background:linear-gradient(135deg,#133244,#0f2836);padding:12px;display:flex;align-items:center;gap:10px">
+            <div style="width:34px;height:34px;border-radius:9px;background:#133244;border:1px solid rgba(245,197,66,.5);display:grid;place-items:center;color:#F5C542;font-family:var(--rounded);font-weight:800">S</div>
+            <div><div style="font-family:var(--rounded);font-weight:800;font-size:14px;color:#fff">Sparepay</div><div style="font-size:9.5px;color:#F5C542">Budget from payday to payday</div></div>
+          </div>
+        </div>
+        <p class="small" style="color:#A29DC4;font-size:10px;margin:0">Studio chrome = studio palette. Product card = Sparepay's own navy + gold. No clash.</p>
+      </div><div class="cap">studio site hosting a product</div>
+    </div>
+    <div>
+      <div class="paneltitle">“by AmarasApps” endorsement lockups</div>
+      <div class="scene" style="margin-bottom:10px"><div class="tile" style="height:64px;background:#fff;gap:8px"><span style="font-family:var(--rounded);font-weight:800;font-size:15px;color:#133244">Sparepay</span><span style="width:1px;height:20px;background:#dfe4e8"></span><span class="small" style="font-size:10px;color:#7c8a98">by</span><svg viewBox="0 0 512 512" width="18"><rect width="512" height="512" rx="112" fill="#0E1013"/><path d="M256 132 L360 380 M256 132 L152 380 M198 300 L314 300" fill="none" stroke="#fff" stroke-width="46" stroke-linecap="round" stroke-linejoin="round"/></svg><span style="font-family:var(--rounded);font-weight:700;font-size:12px;color:#0E1013">AmarasApps</span></div><div class="cap">on light — product page footer</div></div>
+      <div class="scene"><div class="tile" style="height:64px;background:#0D0B1A;gap:8px"><span style="font-family:var(--rounded);font-weight:800;font-size:15px;color:#fff">Sparepay</span><span style="width:1px;height:20px;background:#2a2740"></span><span class="small" style="font-size:10px;color:#A29DC4">by</span><img src="logos/mark-peak.svg" width="18" style="border-radius:5px"/><span style="font-family:var(--rounded);font-weight:700;font-size:12px;color:#fff">AmarasApps</span></div><div class="cap">on dark — shared chrome</div></div>
+      <div class="note">The endorsement uses the <strong>flat monochrome</strong> mark so it stays subordinate to the product. Same pattern for every future app.</div>
+    </div>
+  </div>
+
+  <hr class="rule">
+  <div class="paneltitle">The system, summarised</div>
+  <div class="cols3">
+    <div class="panel"><strong style="font-family:var(--rounded);font-size:12px">Shared (the glue)</strong><p class="small">Logo/endorsement, SF Pro Rounded type, layout language, motion, radii. Documented in <span class="mono">BRAND.md</span>.</p></div>
+    <div class="panel"><strong style="font-family:var(--rounded);font-size:12px">Studio-only</strong><p class="small">The chosen studio palette (Nebula / Monolith / Aurora) — used on amarasapps.com chrome &amp; marketing.</p></div>
+    <div class="panel"><strong style="font-family:var(--rounded);font-size:12px">Product-only</strong><p class="small">Each product's own accent — Sparepay navy+gold; App 2, App 3 get their own. Never forced to match the studio.</p></div>
+  </div>
+  <div class="foot">AMARASAPPS · PRODUCT COEXISTENCE</div>
+  <div class="pagenum">09</div>
+</section>
+
+<!-- ===================== DECISION ===================== -->
+<section class="page">
+  <div class="head2"><h2>Decisions to make</h2><span class="badge" style="background:#dcfce7;color:#14532d">NEXT</span></div>
+  <p class="lead">To move from folio to a built site, I need three picks. All combinations below are pre-validated for contrast, so choose on feel.</p>
+
+  <div class="cols3">
+    <div class="panel">
+      <div class="paneltitle">1 · Logo concept</div>
+      <div style="display:flex;gap:8px;flex-wrap:wrap;margin-bottom:8px">
+        <img src="logos/mark-peak.svg" width="40" style="border-radius:10px"/>
+        <img src="logos/mark-orbit.svg" width="40" style="border-radius:10px"/>
+        <img src="logos/mark-aperture.svg" width="40" style="border-radius:10px"/>
+        <img src="logos/mark-stack.svg" width="40" style="border-radius:10px"/>
+      </div>
+      <p class="small">Peak · Orbit · Prism · Stack.<br><em>My pick:</em> <strong>Orbit</strong> (best studio story, unique) or <strong>Peak</strong> (safest, most flexible).</p>
+    </div>
+    <div class="panel">
+      <div class="paneltitle">2 · Finish</div>
+      <p class="small">Flat · Gradient · Liquid-glass · Skeuomorphic.<br><em>My pick:</em> <strong>Gradient</strong> primary + <strong>Flat</strong> secondary for endorsement/mono.</p>
+    </div>
+    <div class="panel">
+      <div class="paneltitle">3 · Studio palette</div>
+      <div style="display:flex;gap:6px;margin-bottom:8px">
+        <span style="flex:1;height:26px;border-radius:6px;background:linear-gradient(135deg,#0D0B1A,#6D5EF6)"></span>
+        <span style="flex:1;height:26px;border-radius:6px;background:linear-gradient(135deg,#0B0C0E,#3B82F6)"></span>
+        <span style="flex:1;height:26px;border-radius:6px;background:linear-gradient(135deg,#141018,#EC4899)"></span>
+      </div>
+      <p class="small">Nebula · Monolith · Aurora.<br><em>My pick:</em> <strong>Nebula</strong> — distinct from Sparepay, premium, versatile.</p>
+    </div>
+  </div>
+
+  <div class="note" style="margin-top:14px">Once picked, I'll: (1) finalise the chosen SVG in the chosen finish + a flat/mono variant, (2) write the studio tokens to <span class="mono">BRAND.md</span> + a CSS <span class="mono">:root</span>, then (3) build the multi-product amarasapps.com — a polished landing page with the studio brand, per-product sub-pages (Sparepay first, keeping its navy+gold), scroll animation and depth, all WCAG-compliant.</div>
+
+  <div class="panel" style="margin-top:14px">
+    <div class="paneltitle">My overall recommendation</div>
+    <p class="small"><strong>Orbit mark, gradient finish, Nebula palette</strong> — a category-neutral studio identity that is unmistakably <em>not</em> a finance brand, leaves room for games/tools/anything next, and lets Sparepay keep its own navy+gold without conflict.</p>
+  </div>
+  <div class="foot">AMARASAPPS · DECISIONS</div>
+  <div class="pagenum">10</div>
+</section>
+
+</body>
+</html>

@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AmarasApps — Proposal 2 · Prism × Aurora</title>
+<style>
+  :root{
+    --page-w:210mm; --page-h:297mm; --pad:15mm;
+    --sans:-apple-system,BlinkMacSystemFont,"SF Pro Text","Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+    --rounded:"SF Pro Rounded",ui-rounded,-apple-system,"Segoe UI",system-ui,sans-serif;
+    --mono:ui-monospace,"SF Mono",Menlo,Consolas,monospace;
+    --ink:#17121c; --ink-soft:#4d4458; --muted:#8a8098; --line:#e7e3ec;
+  }
+  *{box-sizing:border-box;-webkit-print-color-adjust:exact;print-color-adjust:exact;}
+  html,body{margin:0;padding:0;background:#3a3342;font-family:var(--sans);color:var(--ink);}
+  .page{position:relative;width:var(--page-w);min-height:var(--page-h);background:#fff;margin:10mm auto;padding:var(--pad);box-shadow:0 6px 30px rgba(0,0,0,.4);overflow:hidden;page-break-after:always;}
+  .page:last-child{page-break-after:auto;}
+  @media print{html,body{background:#fff;}.page{margin:0;box-shadow:none;width:auto;min-height:auto;}@page{size:A4;margin:0;}}
+  h1,h2,h3,h4{font-family:var(--rounded);font-weight:700;letter-spacing:-.02em;line-height:1.08;margin:0;}
+  p{line-height:1.55;}
+  .kicker{font-size:10.5px;letter-spacing:.28em;text-transform:uppercase;color:var(--muted);font-weight:700;}
+  .small{font-size:11.5px;color:var(--ink-soft);}
+  .mono{font-family:var(--mono);}
+  .pagenum{position:absolute;bottom:8mm;right:var(--pad);font-size:10px;color:var(--muted);font-family:var(--mono);}
+  .foot{position:absolute;bottom:8mm;left:var(--pad);font-size:10px;color:var(--muted);letter-spacing:.04em;}
+  hr.rule{border:0;border-top:1px solid var(--line);margin:12px 0;}
+  .head2{display:flex;align-items:baseline;justify-content:space-between;margin-bottom:4px;}
+  .head2 h2{font-size:28px;}
+  .badge{font-family:var(--mono);font-size:10px;letter-spacing:.1em;text-transform:uppercase;padding:4px 9px;border-radius:6px;}
+  .lead{color:var(--ink-soft);font-size:13px;max-width:80ch;margin:6px 0 12px;}
+  .paneltitle{font-family:var(--rounded);font-weight:700;font-size:11px;color:var(--muted);text-transform:uppercase;letter-spacing:.12em;margin-bottom:8px;}
+  .panel{border-radius:14px;padding:14px;border:1px solid var(--line);}
+  .cols{display:grid;grid-template-columns:1fr 1fr;gap:14px;align-items:start;}
+  .cols3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px;}
+  .cols4{display:grid;grid-template-columns:1fr 1fr 1fr 1fr;gap:12px;}
+  .note{font-size:11px;color:var(--ink-soft);background:#faf7fc;border-left:3px solid #7C3AED;padding:9px 12px;border-radius:0 8px 8px 0;margin-top:10px;}
+  .note.warn{border-color:#b45309;background:#fff7ed;}
+  .swatches{display:grid;grid-template-columns:repeat(6,1fr);gap:8px;margin:8px 0;}
+  .chipc{border-radius:10px;overflow:hidden;border:1px solid var(--line);}
+  .chipc .col{height:54px;}
+  .chipc .meta{padding:5px 7px;font-size:9.5px;line-height:1.3;}
+  .chipc .meta .role{font-weight:700;color:var(--ink);font-family:var(--rounded);font-size:10px;}
+  .chipc .meta .hex{font-family:var(--mono);color:var(--ink-soft);font-size:9px;}
+  table.wcag{width:100%;border-collapse:collapse;font-size:10px;margin-top:6px;}
+  table.wcag th,table.wcag td{text-align:left;padding:4px 6px;border-bottom:1px solid var(--line);}
+  table.wcag th{font-family:var(--rounded);font-size:9px;text-transform:uppercase;letter-spacing:.08em;color:var(--muted);}
+  table.wcag td.mono{font-family:var(--mono);font-size:9px;}
+  .tag{font-family:var(--mono);font-size:8.5px;font-weight:700;padding:2px 6px;border-radius:5px;}
+  .t-aaa{background:#dcfce7;color:#14532d;}.t-aa{background:#dbeafe;color:#1e3a8a;}
+  .t-aal{background:#fef9c3;color:#713f12;}.t-fail{background:#fee2e2;color:#7f1d1d;}
+  .dot{display:inline-block;width:11px;height:11px;border-radius:3px;vertical-align:middle;margin-right:5px;border:1px solid rgba(0,0,0,.12);}
+  .scene{border-radius:12px;overflow:hidden;border:1px solid var(--line);}
+  .scene .cap{padding:6px 8px;font-size:9.5px;color:var(--muted);font-family:var(--mono);border-top:1px solid var(--line);background:#fafbfc;}
+  .tile{display:flex;align-items:center;justify-content:center;}
+  .banner{display:flex;align-items:center;gap:12px;padding:0 18px;}
+  .wordmark{font-family:var(--rounded);font-weight:800;letter-spacing:-.02em;}
+  .ogcard{display:flex;flex-direction:column;justify-content:center;align-items:center;gap:10px;}
+  .cover{background:radial-gradient(1100px 500px at 15% -10%,rgba(167,139,250,.4),transparent 60%),radial-gradient(900px 520px at 115% 25%,rgba(236,72,153,.4),transparent 55%),radial-gradient(700px 400px at 60% 120%,rgba(251,113,133,.3),transparent 55%),linear-gradient(160deg,#141018 0%,#221a2c 55%,#141018 100%);color:#fff;display:flex;flex-direction:column;justify-content:space-between;}
+  .cover h1{font-size:54px;margin:0;background:linear-gradient(90deg,#C4B5FD,#F0ABFC 55%,#FDA4AF);-webkit-background-clip:text;background-clip:text;color:transparent;}
+  .cover .sub{font-size:17px;color:#c3b6cf;max-width:36ch;line-height:1.5;}
+  .cover .chip{border:1px solid rgba(255,255,255,.22);background:rgba(255,255,255,.07);padding:6px 12px;border-radius:999px;font-size:12px;font-family:var(--mono);color:#e6dcee;}
+</style>
+</head>
+<body>
+
+<!-- ===== COVER ===== -->
+<section class="page cover">
+  <div style="display:flex;align-items:center;gap:14px">
+    <img src="logos/prism-aurora.svg" width="60" height="60" style="border-radius:15px"/>
+    <span class="kicker" style="color:#c9a9e0">Proposal 2 · Focused Direction</span>
+  </div>
+  <div>
+    <h1>Prism × Aurora</h1>
+    <p class="sub">One studio, refracted into many products. The mark splits light; the palette is that spectrum. A single, coherent idea — with a built-in system for sub-brands.</p>
+    <div style="display:flex;gap:10px;flex-wrap:wrap;margin-top:22px">
+      <span class="chip">Prism mark · all finishes</span>
+      <span class="chip">Aurora palette</span>
+      <span class="chip">Per-product spectrum accents</span>
+      <span class="chip">WCAG verified</span>
+    </div>
+  </div>
+  <div>
+    <div style="display:flex;gap:12px;align-items:center;margin-bottom:16px">
+      <img src="logos/prism-sparepay.svg" width="46" style="border-radius:12px"/>
+      <img src="logos/prism-app2.svg" width="46" style="border-radius:12px"/>
+      <img src="logos/prism-app3.svg" width="46" style="border-radius:12px"/>
+      <span class="small" style="color:#a494b3">Each product = the Prism, refracting one colour from the studio spectrum</span>
+    </div>
+    <p class="small" style="color:#9585a3">The concept: a prism refracts white light into a spectrum — exactly what a studio does with one identity across many apps. Prepared 23 Jul 2026.</p>
+  </div>
+  <div class="foot" style="color:#6b5c7a">AMARASAPPS · PROPOSAL 2</div>
+  <div class="pagenum" style="color:#6b5c7a">01</div>
+</section>
+
+<!-- ===== WHY THIS PAIRING ===== -->
+<section class="page">
+  <div class="head2"><h2>Why Prism × Aurora works</h2><span class="badge" style="background:#f3e8ff;color:#6b21a8">CONCEPT</span></div>
+  <p class="lead">This is the most <strong>conceptually unified</strong> pairing in the folio — and deliberately so. A <strong>prism</strong> takes one input and refracts it into a <strong>spectrum</strong>; <strong>Aurora</strong> <em>is</em> a spectrum (violet → magenta → coral). The mark and the palette tell the identical story: <strong>one studio, many colourful outputs.</strong> That gives the brand a reason to exist beyond decoration — and hands you a ready-made system for sub-brands.</p>
+
+  <div class="cols">
+    <div class="panel">
+      <div class="paneltitle">What it signals</div>
+      <p class="small">Creative, versatile, modern, <strong>category-agnostic</strong>. This reads “studio that could make a game, a tool, or an app” — the opposite of a single-purpose finance brand. If your roadmap might include playful or creative products, this is the strongest fit.</p>
+    </div>
+    <div class="panel">
+      <div class="paneltitle">The discipline that makes it safe</div>
+      <p class="small">Bold palettes fail when everything shouts. The rule here: <strong>the studio owns the full spectrum; each product owns exactly one colour</strong> split from it. Body text always sits on near-white / near-black neutrals. The spectrum is for the mark, gradients, glows and accents — never long-form text.</p>
+    </div>
+  </div>
+
+  <div class="note warn"><strong>The one hard accessibility rule (measured, not guessed):</strong> the bright spectrum colours are <em>luminous</em> — they pass <span class="tag t-aaa">AAA</span> as text/glow on dark and as fills behind <em>dark</em> text, but they <strong>fail</strong> as white-text button fills and as coloured text on white. So: bright accent = dark-ink button or dark-bg glow; for a coloured button with white text on light pages, use the deep violet <span class="mono">#7C3AED</span> (<span class="tag t-aa">AA 5.7</span>). Every mockup in this proposal obeys this.</p></div>
+
+  <hr class="rule">
+  <div class="paneltitle">This proposal, in five combinations</div>
+  <div class="cols4">
+    <div class="panel"><strong style="font-family:var(--rounded);font-size:11.5px">1 · Mark finishes</strong><p class="small">Prism in flat, gradient, liquid-glass, skeuomorphic — in Aurora colour.</p></div>
+    <div class="panel"><strong style="font-family:var(--rounded);font-size:11.5px">2 · Usage scenarios</strong><p class="small">Icon, lockup, OG card, favicon, mono.</p></div>
+    <div class="panel"><strong style="font-family:var(--rounded);font-size:11.5px">3 · Aurora palette</strong><p class="small">Dark + light, full WCAG table.</p></div>
+    <div class="panel"><strong style="font-family:var(--rounded);font-size:11.5px">4 · Sub-brand system</strong><p class="small">Per-product Prisms + coexistence + endorsement.</p></div>
+  </div>
+  <div class="foot">AMARASAPPS · PROPOSAL 2</div>
+  <div class="pagenum">02</div>
+</section>
+
+<!-- ===== MARK FINISHES ===== -->
+<section class="page">
+  <div class="head2"><h2>The Prism mark — every finish</h2><span class="badge" style="background:#f3e8ff;color:#6b21a8">MARK</span></div>
+  <p class="lead">The faceted “A” refracts the Aurora spectrum — violet on the left face, coral on the right, a spectrum crossbar. Shown in the four delivery finishes so you can choose form <em>and</em> finish together.</p>
+
+  <div class="cols4">
+    <div class="scene">
+      <div class="tile" style="height:140px;background:#f2eff5">
+        <svg viewBox="0 0 512 512" width="108">
+          <rect x="16" y="16" width="480" height="480" rx="112" fill="#7C3AED"/>
+          <g stroke-linejoin="round">
+            <path d="M256 150 L168 356 L214 356 L256 256 Z" fill="#fff" opacity=".95"/>
+            <path d="M256 150 L344 356 L298 356 L256 256 Z" fill="#fff" opacity=".7"/>
+            <path d="M222 300 L290 300 L276 336 L236 336 Z" fill="#fff"/>
+          </g>
+        </svg>
+      </div><div class="cap">FLAT · one colour (violet), print-safe</div>
+    </div>
+    <div class="scene"><div class="tile" style="height:140px;background:#f2eff5"><img src="logos/prism-aurora.svg" width="108"/></div><div class="cap">GRADIENT · Aurora spectrum (default)</div></div>
+    <div class="scene"><div class="tile" style="height:140px;background:#1c1526"><img src="logos/prism-aurora-glass.svg" width="108"/></div><div class="cap">LIQUID GLASS · translucent + sheen</div></div>
+    <div class="scene">
+      <div class="tile" style="height:140px;background:#f2eff5">
+        <svg viewBox="0 0 512 512" width="108">
+          <defs>
+            <linearGradient id="skb" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#3a2a5c"/><stop offset="1" stop-color="#1c1330"/></linearGradient>
+            <radialGradient id="skt" cx="50%" cy="0%" r="80%"><stop offset="0" stop-color="#fff" stop-opacity=".4"/><stop offset="1" stop-color="#fff" stop-opacity="0"/></radialGradient>
+            <linearGradient id="skl" x1="0" y1="1" x2="1" y2="0"><stop offset="0" stop-color="#7C3AED"/><stop offset="1" stop-color="#A78BFA"/></linearGradient>
+            <linearGradient id="skr" x1="1" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#FB7185"/><stop offset="1" stop-color="#EC4899"/></linearGradient>
+          </defs>
+          <rect x="16" y="20" width="480" height="480" rx="112" fill="#0f0a1c"/>
+          <rect x="16" y="16" width="480" height="480" rx="112" fill="url(#skb)"/>
+          <path d="M40 60 Q256 -10 472 60 L472 240 Q256 150 40 240 Z" fill="url(#skt)"/>
+          <g stroke-linejoin="round">
+            <path d="M256 150 L168 356 L214 356 L256 256 Z" fill="url(#skl)"/>
+            <path d="M256 150 L344 356 L298 356 L256 256 Z" fill="url(#skr)"/>
+            <path d="M222 300 L290 300 L276 336 L236 336 Z" fill="#fff"/>
+          </g>
+        </svg>
+      </div><div class="cap">SKEUOMORPHIC · glossy, tactile</div>
+    </div>
+  </div>
+
+  <div class="cols" style="margin-top:14px">
+    <div class="panel">
+      <div class="paneltitle">Recommended finish</div>
+      <p class="small"><strong>Gradient (Aurora)</strong> as the hero — it's the whole point of the concept. <strong>Flat violet</strong> as the mandatory secondary for mono/print/endorsement. <strong>Liquid-glass</strong> for the website hero and app icon if you want the Apple-OS feel. Skeuomorphic as an optional alt icon only.</p>
+    </div>
+    <div class="panel">
+      <div class="paneltitle">Monochrome / knockout</div>
+      <div style="display:flex;gap:14px;align-items:center;justify-content:center;height:88px">
+        <svg viewBox="0 0 512 512" width="52"><rect x="16" y="16" width="480" height="480" rx="112" fill="#17121c"/><g stroke-linejoin="round"><path d="M256 150 L168 356 L214 356 L256 256 Z" fill="#fff"/><path d="M256 150 L344 356 L298 356 L256 256 Z" fill="#fff" opacity=".75"/><path d="M222 300 L290 300 L276 336 L236 336 Z" fill="#fff"/></g></svg>
+        <svg viewBox="0 0 512 512" width="52"><rect x="16" y="16" width="480" height="480" rx="112" fill="#fff" stroke="#e7e3ec"/><g stroke-linejoin="round"><path d="M256 150 L168 356 L214 356 L256 256 Z" fill="#17121c"/><path d="M256 150 L344 356 L298 356 L256 256 Z" fill="#17121c" opacity=".72"/><path d="M222 300 L290 300 L276 336 L236 336 Z" fill="#17121c"/></g></svg>
+        <span class="small" style="max-width:20ch">The two-facet split still reads in pure mono — depth via opacity, not colour.</span>
+      </div>
+    </div>
+  </div>
+  <div class="foot">AMARASAPPS · PROPOSAL 2 · MARK FINISHES</div>
+  <div class="pagenum">03</div>
+</section>
+
+<!-- ===== USAGE SCENARIOS ===== -->
+<section class="page">
+  <div class="head2"><h2>Prism in every scenario</h2><span class="badge" style="background:#f3e8ff;color:#6b21a8">USAGE</span></div>
+  <p class="lead">The chosen Aurora-gradient Prism across the real placements: home-screen icon, horizontal lockup, 1200×630 social/OG share card, and favicon — on both dark and light grounds.</p>
+
+  <div style="display:grid;grid-template-columns:96px 1.5fr 2fr 70px;gap:12px;align-items:center">
+    <div class="scene"><div class="tile" style="height:84px;background:#f0edf4"><img src="logos/prism-aurora.svg" width="62" style="border-radius:15px"/></div><div class="cap">app icon (light bg)</div></div>
+    <div class="scene"><div class="banner" style="height:84px;background:#141018"><img src="logos/prism-aurora.svg" width="36" style="border-radius:9px"/><span class="wordmark" style="color:#F6F2FA;font-size:19px">AmarasApps</span></div><div class="cap">horizontal lockup (dark)</div></div>
+    <div class="scene"><div class="ogcard" style="height:84px;background:radial-gradient(280px 130px at 18% 0,rgba(167,139,250,.4),transparent 60%),radial-gradient(280px 140px at 120% 30%,rgba(236,72,153,.38),transparent 55%),linear-gradient(135deg,#141018,#221a2c)"><div style="display:flex;gap:10px;align-items:center"><img src="logos/prism-aurora.svg" width="32" style="border-radius:8px"/><span class="wordmark" style="color:#fff;font-size:17px">AmarasApps</span></div><span class="small" style="color:#C4B5FD;font-size:10px">Independent software studio</span></div><div class="cap">OG / social share 1200×630</div></div>
+    <div class="scene"><div class="tile" style="height:84px;background:#fff"><img src="logos/prism-aurora.svg" width="28" style="border-radius:6px"/></div><div class="cap">favicon</div></div>
+  </div>
+
+  <div style="display:grid;grid-template-columns:96px 1.5fr 2fr 70px;gap:12px;align-items:center;margin-top:12px">
+    <div class="scene"><div class="tile" style="height:84px;background:#1c1526"><img src="logos/prism-aurora-glass.svg" width="62" style="border-radius:15px"/></div><div class="cap">app icon (glass, dark)</div></div>
+    <div class="scene"><div class="banner" style="height:84px;background:#FAF7FC"><img src="logos/prism-aurora.svg" width="36" style="border-radius:9px"/><span class="wordmark" style="color:#17121c;font-size:19px">AmarasApps</span></div><div class="cap">horizontal lockup (light)</div></div>
+    <div class="scene"><div class="ogcard" style="height:84px;background:#FAF7FC"><div style="display:flex;gap:10px;align-items:center"><img src="logos/prism-aurora.svg" width="32" style="border-radius:8px"/><span class="wordmark" style="color:#17121c;font-size:17px">AmarasApps</span></div><span class="small" style="color:#7C3AED;font-size:10px">Independent software studio</span></div><div class="cap">OG / social share (light)</div></div>
+    <div class="scene"><div class="tile" style="height:84px;background:#17121c"><img src="logos/prism-aurora.svg" width="28" style="border-radius:6px"/></div><div class="cap">favicon (dark)</div></div>
+  </div>
+
+  <div class="note">The spectrum crossbar keeps the mark recognisable even at favicon size, and the violet/coral split survives on both light and dark grounds. On light backgrounds the tile keeps its dark interior so the spectrum stays vivid (bright-on-white would wash out and fail contrast).</div>
+  <div class="foot">AMARASAPPS · PROPOSAL 2 · USAGE</div>
+  <div class="pagenum">04</div>
+</section>
+
+<!-- ===== AURORA PALETTE ===== -->
+<section class="page">
+  <div class="head2"><h2>The Aurora palette</h2><span class="badge" style="background:#141018;color:#F0ABFC">PALETTE</span></div>
+  <p class="lead">A violet→magenta→coral spectrum over a deep aubergine canvas, with near-white text and a light inverse for body content. Expressive but disciplined: spectrum for accents, neutrals for reading.</p>
+  <div class="swatches">
+    <div class="chipc"><div class="col" style="background:#141018"></div><div class="meta"><div class="role">Canvas</div><div class="hex">#141018</div></div></div>
+    <div class="chipc"><div class="col" style="background:#211A2A"></div><div class="meta"><div class="role">Surface</div><div class="hex">#211A2A</div></div></div>
+    <div class="chipc"><div class="col" style="background:#F6F2FA"></div><div class="meta"><div class="role">Text</div><div class="hex">#F6F2FA</div></div></div>
+    <div class="chipc"><div class="col" style="background:#B4A7C0"></div><div class="meta"><div class="role">Muted</div><div class="hex">#B4A7C0</div></div></div>
+    <div class="chipc"><div class="col" style="background:linear-gradient(135deg,#A78BFA,#EC4899,#FB7185)"></div><div class="meta"><div class="role">Spectrum</div><div class="hex">violet→coral</div></div></div>
+    <div class="chipc"><div class="col" style="background:#7C3AED"></div><div class="meta"><div class="role">Deep (btn)</div><div class="hex">#7C3AED</div></div></div>
+  </div>
+
+  <div class="cols" style="margin-top:8px">
+    <div class="scene">
+      <div style="padding:16px;background:radial-gradient(340px 200px at 12% -10%,rgba(236,72,153,.32),transparent 60%),radial-gradient(320px 220px at 120% 20%,rgba(167,139,250,.4),transparent 55%),linear-gradient(160deg,#141018,#221a2c);color:#F6F2FA;height:206px;display:flex;flex-direction:column;gap:10px">
+        <div style="display:flex;align-items:center;gap:9px"><img src="logos/prism-aurora.svg" width="26" style="border-radius:7px"/><span class="wordmark" style="font-size:13px">AmarasApps</span><span style="flex:1"></span><span class="small" style="color:#B4A7C0;font-size:10px">Products · About</span></div>
+        <div style="font-family:var(--rounded);font-weight:800;font-size:21px;line-height:1.1;margin-top:4px">One studio.<br><span style="background:linear-gradient(90deg,#C4B5FD,#EC4899,#FB7185);-webkit-background-clip:text;background-clip:text;color:transparent">A spectrum of apps.</span></div>
+        <p style="font-size:10.5px;color:#B4A7C0;margin:0">Thoughtful software across every category.</p>
+        <span style="display:inline-block;padding:9px 15px;border-radius:9px;background:linear-gradient(135deg,#7C3AED,#EC4899);color:#fff;font-family:var(--rounded);font-weight:700;font-size:11.5px;width:max-content">See our work</span>
+      </div><div class="cap">primary — dark hero (spectrum gradient button)</div>
+    </div>
+    <div class="scene">
+      <div style="padding:16px;background:#FAF7FC;color:#17121C;height:206px;display:flex;flex-direction:column;gap:10px">
+        <div style="display:flex;align-items:center;gap:9px"><img src="logos/prism-aurora.svg" width="26" style="border-radius:7px"/><span class="wordmark" style="font-size:13px">AmarasApps</span><span style="flex:1"></span><span class="small" style="color:#61566B;font-size:10px">Products · About</span></div>
+        <div style="background:#fff;border:1px solid #efe8f3;border-radius:12px;padding:12px;margin-top:2px">
+          <div class="small" style="color:#61566B;text-transform:uppercase;letter-spacing:.1em;font-size:9px">Featured</div>
+          <div style="font-family:var(--rounded);font-weight:800;font-size:15px">Sparepay</div>
+          <p style="font-size:10px;color:#61566B;margin:4px 0 0">Budget from payday to payday.</p>
+        </div>
+        <div style="display:flex;gap:8px"><span style="padding:9px 15px;border-radius:9px;background:#7C3AED;color:#fff;font-family:var(--rounded);font-weight:700;font-size:11.5px">Primary</span><span style="padding:9px 15px;border-radius:9px;border:1px solid #e4d3f0;color:#7C3AED;font-family:var(--rounded);font-weight:700;font-size:11.5px">Ghost</span></div>
+      </div><div class="cap">inverse — light body (deep-violet button)</div>
+    </div>
+  </div>
+
+  <table class="wcag">
+    <tr><th>Foreground</th><th>On</th><th>Ratio</th><th>Grade</th><th>Use</th></tr>
+    <tr><td class="mono">#F6F2FA text</td><td class="mono">#141018</td><td class="mono">17.01</td><td><span class="tag t-aaa">AAA</span></td><td class="small">body on dark</td></tr>
+    <tr><td class="mono">#B4A7C0 muted</td><td class="mono">#141018</td><td class="mono">8.26</td><td><span class="tag t-aaa">AAA</span></td><td class="small">secondary on dark</td></tr>
+    <tr><td class="mono">#C4B5FD link</td><td class="mono">#141018</td><td class="mono">10.18</td><td><span class="tag t-aaa">AAA</span></td><td class="small">links on dark</td></tr>
+    <tr><td class="mono">#EC4899 magenta</td><td class="mono">#141018</td><td class="mono">5.33</td><td><span class="tag t-aa">AA</span></td><td class="small">accent text/icon on dark</td></tr>
+    <tr><td class="mono">#17121C ink</td><td class="mono">#FAF7FC</td><td class="mono">17.35</td><td><span class="tag t-aaa">AAA</span></td><td class="small">body on light</td></tr>
+    <tr><td class="mono">#FFFFFF</td><td class="mono">#7C3AED button</td><td class="mono">5.70</td><td><span class="tag t-aa">AA</span></td><td class="small">primary button on light</td></tr>
+    <tr><td class="mono">#141018 ink</td><td class="mono">#EC4899 fill</td><td class="mono">4.78→AA on surf</td><td><span class="tag t-aa">AA</span></td><td class="small">dark-text chip</td></tr>
+  </table>
+  <div class="foot">AMARASAPPS · PROPOSAL 2 · AURORA</div>
+  <div class="pagenum">05</div>
+</section>
+
+<!-- ===== SUB-BRAND SYSTEM ===== -->
+<section class="page">
+  <div class="head2"><h2>The sub-brand system</h2><span class="badge" style="background:#f3e8ff;color:#6b21a8">COEXISTENCE</span></div>
+  <p class="lead">The heart of this proposal. The studio owns the <strong>full spectrum</strong>; each product is the <strong>same Prism form refracting one colour</strong> split from it. Products feel unmistakably part of the family, yet each is distinct — and a new app just claims the next unused hue.</p>
+
+  <div class="cols4">
+    <div class="scene"><div class="tile" style="height:100px;background:#1c1526"><img src="logos/prism-aurora.svg" width="72"/></div><div class="cap">STUDIO · full spectrum</div></div>
+    <div class="scene"><div class="tile" style="height:100px;background:#1c1526"><img src="logos/prism-sparepay.svg" width="72"/></div><div class="cap">SPAREPAY · gold #F5C542</div></div>
+    <div class="scene"><div class="tile" style="height:100px;background:#1c1526"><img src="logos/prism-app2.svg" width="72"/></div><div class="cap">APP 2 · emerald #34D399</div></div>
+    <div class="scene"><div class="tile" style="height:100px;background:#1c1526"><img src="logos/prism-app3.svg" width="72"/></div><div class="cap">APP 3 · sky #38BDF8</div></div>
+  </div>
+
+  <div class="cols" style="margin-top:14px">
+    <div class="scene">
+      <div style="padding:16px;background:linear-gradient(160deg,#141018,#221a2c);color:#F6F2FA;height:200px;display:flex;flex-direction:column;gap:9px">
+        <div style="display:flex;align-items:center;gap:9px"><img src="logos/prism-aurora.svg" width="24" style="border-radius:7px"/><span class="wordmark" style="font-size:12px">AmarasApps</span><span style="flex:1"></span><span class="small" style="color:#B4A7C0;font-size:10px">Products</span></div>
+        <div class="small" style="color:#B4A7C0;font-size:9px;text-transform:uppercase;letter-spacing:.1em">Our apps</div>
+        <div style="display:flex;flex-direction:column;gap:7px">
+          <div style="display:flex;align-items:center;gap:9px;background:#211A2A;border-radius:10px;padding:8px 10px;border-left:3px solid #F5C542"><img src="logos/prism-sparepay.svg" width="24" style="border-radius:6px"/><div><div style="font-family:var(--rounded);font-weight:700;font-size:12px">Sparepay</div><div style="font-size:9px;color:#B4A7C0">Budget from payday to payday</div></div></div>
+          <div style="display:flex;align-items:center;gap:9px;background:#211A2A;border-radius:10px;padding:8px 10px;border-left:3px solid #34D399"><img src="logos/prism-app2.svg" width="24" style="border-radius:6px"/><div><div style="font-family:var(--rounded);font-weight:700;font-size:12px;color:#8a8098">Coming soon</div><div style="font-size:9px;color:#6b6478">Product two</div></div></div>
+        </div>
+      </div><div class="cap">studio site — products list, each with its own hue</div>
+    </div>
+    <div>
+      <div class="paneltitle">“by AmarasApps” endorsement</div>
+      <div class="scene" style="margin-bottom:10px"><div class="tile" style="height:60px;background:#fff;gap:8px"><span style="font-family:var(--rounded);font-weight:800;font-size:15px;color:#133244">Sparepay</span><span style="width:1px;height:20px;background:#e3e3e8"></span><span class="small" style="font-size:10px;color:#8a8098">by</span><svg viewBox="0 0 512 512" width="17"><rect width="512" height="512" rx="112" fill="#17121c"/><g stroke-linejoin="round"><path d="M256 150 L168 356 L214 356 L256 256 Z" fill="#fff"/><path d="M256 150 L344 356 L298 356 L256 256 Z" fill="#fff" opacity=".72"/><path d="M222 300 L290 300 L276 336 L236 336 Z" fill="#fff"/></g></svg><span style="font-family:var(--rounded);font-weight:700;font-size:12px;color:#17121c">AmarasApps</span></div><div class="cap">light — product page footer (mono mark)</div></div>
+      <div class="scene"><div class="tile" style="height:60px;background:#141018;gap:8px"><span style="font-family:var(--rounded);font-weight:800;font-size:15px;color:#fff">Sparepay</span><span style="width:1px;height:20px;background:#2f2740"></span><span class="small" style="font-size:10px;color:#B4A7C0">by</span><img src="logos/prism-aurora.svg" width="17" style="border-radius:5px"/><span style="font-family:var(--rounded);font-weight:700;font-size:12px;color:#fff">AmarasApps</span></div><div class="cap">dark — shared chrome (spectrum mark)</div></div>
+      <div class="note">Sparepay keeps its own navy+gold on <em>its</em> pages; the endorsement is the only place the studio mark appears there — small, mono, subordinate.</div>
+    </div>
+  </div>
+
+  <table class="wcag">
+    <tr><th>Product accent</th><th>On Aurora surface</th><th>As dark-ink button</th><th>Rule</th></tr>
+    <tr><td class="mono"><span class="dot" style="background:#F5C542"></span>Sparepay gold</td><td class="mono">10.39 <span class="tag t-aaa">AAA</span></td><td class="mono">11.59 <span class="tag t-aaa">AAA</span></td><td class="small">glow/fill only</td></tr>
+    <tr><td class="mono"><span class="dot" style="background:#34D399"></span>App2 emerald</td><td class="mono">8.77 <span class="tag t-aaa">AAA</span></td><td class="mono">9.78 <span class="tag t-aaa">AAA</span></td><td class="small">glow/fill only</td></tr>
+    <tr><td class="mono"><span class="dot" style="background:#38BDF8"></span>App3 sky</td><td class="mono">7.87 <span class="tag t-aaa">AAA</span></td><td class="mono">8.78 <span class="tag t-aaa">AAA</span></td><td class="small">glow/fill only</td></tr>
+  </table>
+  <p class="small" style="margin-top:5px"><strong>System rule:</strong> accents are used as a <em>card border, glow, or dark-ink button</em> — never as coloured text on white, never as a white-text button fill (all bright hues fail those). This keeps every product AAA-legible while staying vivid.</p>
+  <div class="foot">AMARASAPPS · PROPOSAL 2 · SUB-BRANDS</div>
+  <div class="pagenum">06</div>
+</section>
+
+<!-- ===== DECISION ===== -->
+<section class="page">
+  <div class="head2"><h2>Proposal 2 — at a glance</h2><span class="badge" style="background:#dcfce7;color:#14532d">SUMMARY</span></div>
+  <p class="lead">A single, committed direction: <strong>Prism mark · Aurora palette · spectrum-refraction sub-brand system.</strong> The most conceptually unified and expressive option — best if AmarasApps may span many categories (including playful/creative products), and it hands you a scalable per-product colour system out of the box.</p>
+
+  <div class="cols3">
+    <div class="panel"><div class="paneltitle">Strengths</div><p class="small">• One idea across mark + palette + sub-brands.<br>• Category-agnostic, creative, memorable.<br>• Built-in per-product accent system.<br>• Fully WCAG-verified.</p></div>
+    <div class="panel"><div class="paneltitle">Trade-offs</div><p class="small">• Boldest palette — needs the discipline rules.<br>• Bright hues are fill/glow only (never white-text buttons).<br>• Less “serious/fintech” than a blue direction.</p></div>
+    <div class="panel"><div class="paneltitle">Best if…</div><p class="small">Your roadmap may include games, creative or consumer apps — not only finance/utility. If you want maximum gravitas instead, Proposal 1's Monolith/Nebula is safer.</p></div>
+  </div>
+
+  <hr class="rule">
+  <div class="paneltitle">If you choose this — remaining picks</div>
+  <div class="cols3">
+    <div class="panel"><strong style="font-family:var(--rounded);font-size:12px">Finish</strong><p class="small">Gradient (default) · or Liquid-glass for the hero/icon. Flat violet always ships as the mono secondary.</p></div>
+    <div class="panel"><strong style="font-family:var(--rounded);font-size:12px">Product hues</strong><p class="small">Confirm Sparepay = gold. Reserve emerald / sky / amber / coral for future apps (all AAA-verified).</p></div>
+    <div class="panel"><strong style="font-family:var(--rounded);font-size:12px">Wordmark</strong><p class="small">“AmarasApps” in SF Pro Rounded 800. Optional: a custom-drawn wordmark as a later step.</p></div>
+  </div>
+
+  <div class="note">Next step if approved: finalise the Prism SVG (chosen finish + flat/mono), write the Aurora tokens + the sub-brand accent rules to <span class="mono">BRAND.md</span>, then build amarasapps.com — studio landing (Aurora), per-product pages (Sparepay keeps navy+gold), scroll animation + depth, all WCAG-compliant.</div>
+  <div class="foot">AMARASAPPS · PROPOSAL 2 · DECISION</div>
+  <div class="pagenum">07</div>
+</section>
+
+</body>
+</html>
